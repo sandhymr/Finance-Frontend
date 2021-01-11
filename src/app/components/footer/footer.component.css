@@ -1,0 +1,21 @@
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  /* padding-top: 5%; */
+  background-color: #172337;
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+a.one:link {
+  color: #ff0000;
+}
+a.one:visited {
+  color: #0000ff;
+}
+a.one:hover {
+  color: #ffcc00;
+}
