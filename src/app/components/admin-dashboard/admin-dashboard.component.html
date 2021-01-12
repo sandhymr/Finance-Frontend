@@ -37,19 +37,19 @@
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" (click)="show()">
+          <a class="nav-link" (click)="addProduct()">
             <!-- <i class="material-icons">viewAllNotCardHolders</i> -->
             <p>AddProduct</p>
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" (click)="show()">
+          <a class="nav-link" (click)="addFaq()">
             <!-- <i class="material-icons">viewAllNotCardHolders</i> -->
             <p>AddFAQForProduct</p>
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" (click)="show()">
+          <a class="nav-link" (click)="allProducts()">
             <!-- <i class="material-icons">viewAllNotCardHolders</i> -->
             <p>viewAllProducts</p>
           </a>
@@ -96,14 +96,12 @@
       </div>
     </nav>
     <!-- End Navbar -->
+
     <div class="content">
       <div class="container-fluid">
+        <!-- cardtypesearch -->
         <div *ngIf="type">
           <form #cardType="ngForm" (ngSubmit)="search()">
-            <label class="mb-1">
-              <!-- <h6 class="mb-0 text-sm">Enter card type</h6> -->
-            </label>
-            &nbsp;
             <input
               class="form-control"
               type="text"
@@ -117,6 +115,7 @@
           </form>
         </div>
 
+        <!-- viewallcard -->
         <div *ngIf="flag">
           <table class="table table-bordered">
             <tr>
@@ -139,6 +138,12 @@
             </tr>
           </table>
         </div>
+
+        <!-- addProduct  -->
+        <app-add-product *ngIf="addproduct"></app-add-product>
+
+        <!-- allProducts -->
+        <app-product-list *ngIf="allproduct"></app-product-list>
       </div>
     </div>
     <footer class="footer">

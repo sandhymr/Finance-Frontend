@@ -9,18 +9,22 @@ declare var $;
   styleUrls: ["./admin-dashboard.component.css"],
 })
 export class AdminDashboardComponent implements OnInit {
-  flag: boolean = false;
-  show: boolean = true;
+  flag: boolean = false; //viewall
+  show: boolean = true; //generatecardbtn
   users: User[];
   user: User = new User();
   result: any;
-  type: boolean = false;
+  type: boolean = false; //searchform
+  addproduct: boolean = false; //getaddproduct
+  allproduct: boolean = false; //viewallproducts
   constructor(private adminService: AdminService) {}
 
   ngOnInit() {}
 
   viewAllNotCardHolders() {
     this.type = false;
+    this.allproduct = false;
+    this.addproduct = false;
     this.adminService.viewAllNotCardHolders().subscribe((data) => {
       if (data != null) {
         this.flag = true;
@@ -28,6 +32,7 @@ export class AdminDashboardComponent implements OnInit {
         this.show = true;
       } else {
         this.flag = false;
+        alert("No records found");
       }
     });
   }
@@ -50,34 +55,56 @@ export class AdminDashboardComponent implements OnInit {
 
   viewAllCardHolders() {
     this.type = false;
+    this.addproduct = false;
+    this.allproduct = false;
+    this.show = false;
     this.adminService.viewAllCardHolders().subscribe((data) => {
       if (data != null) {
         this.flag = true;
-        this.show = false;
+
         this.users = data;
       } else {
         this.flag = false;
-        this.show = false;
       }
     });
   }
 
   viewCardHoldersByType() {
     this.type = true;
+    this.flag = false;
+    this.allproduct = false;
+    this.addproduct = false;
   }
 
   search() {
+    this.show = false;
+    this.addproduct = false;
+    this.allproduct = false;
     this.adminService
       .viewCardHoldersByType(this.user.cardType)
       .subscribe((data) => {
         if (data != null) {
           this.flag = true;
-          this.show = false;
           this.users = data;
         } else {
           this.flag = false;
-          this.show = false;
         }
       });
+  }
+
+  addProduct() {
+    this.flag = false;
+    this.type = false;
+    this.allproduct = false;
+    this.addproduct = true;
+  }
+
+  addFaq() {}
+
+  allProducts() {
+    this.flag = false;
+    this.type = false;
+    this.allproduct = true;
+    this.addproduct = false;
   }
 }
