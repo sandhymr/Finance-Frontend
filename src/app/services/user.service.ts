@@ -22,4 +22,10 @@ export class UserService {
   public verifyOtp(forgotpwd: ForgotPwd): Observable<any> {
     return this.http.post<any>("http://localhost:8181/verifyUser", forgotpwd);
   }
+
+  public payJoiningFee(userId: number): Observable<any> {
+    return this.http.get<any>(
+      "http://localhost:8181/payJoiningFee?userId=" + userId
+    );
+  }
 }
