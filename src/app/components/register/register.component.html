@@ -4,6 +4,13 @@
       <div class="col-md-3 register-left">
         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
         <h3>Welcome !</h3>
+        <input
+          type="submit"
+          name=""
+          value="Login"
+          onclick="location.href = 'http://localhost:4200/login';"
+        /><br />
+        <p>Already Register ?</p>
       </div>
       <div class="col-md-9 register-right">
         <div class="tab-content" id="myTabContent">
@@ -19,6 +26,8 @@
                 <div class="form-group">
                   <input
                     type="text"
+                    #firstName="ngModel"
+                    pattern="[a-zA-Z]+"
                     class="form-control"
                     placeholder="First Name *"
                     name="firstName"
@@ -26,9 +35,25 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    firstName.invalid && (firstName.dirty || firstName.touched)
+                  "
+                >
+                  <div *ngIf="firstName.errors?.required">
+                    Name cannot be empty
+                  </div>
+                  <div *ngIf="firstName.errors?.pattern">
+                    Must contain characters
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="text"
+                    #lastName="ngModel"
+                    pattern="[a-zA-Z]+"
                     class="form-control"
                     placeholder="Last Name *"
                     name="lastName"
@@ -36,6 +61,20 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    lastName.invalid && (lastName.dirty || lastName.touched)
+                  "
+                >
+                  <div *ngIf="lastName.errors?.required">
+                    Name cannot be empty
+                  </div>
+                  <div *ngIf="lastName.errors?.pattern">
+                    Must contain characters
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="date"
@@ -46,6 +85,7 @@
                     required
                   />
                 </div>
+
                 <div class="form-group">
                   <input
                     type="text"
@@ -56,9 +96,12 @@
                     required
                   />
                 </div>
+
                 <div class="form-group">
                   <input
-                    type="text"
+                    type="tel"
+                    #mobileNo="ngModel"
+                    pattern="[0-9]{10}"
                     minlength="10"
                     maxlength="10"
                     name="txtEmpPhone"
@@ -69,9 +112,25 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    mobileNo.invalid && (mobileNo.dirty || mobileNo.touched)
+                  "
+                >
+                  <div *ngIf="mobileNo.errors?.required">
+                    Number cannot be empty
+                  </div>
+                  <div *ngIf="mobileNo.errors?.pattern">
+                    Must contain 10 number
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="email"
+                    #emailId="ngModel"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     class="form-control"
                     placeholder="Email Address *"
                     name="emailId"
@@ -79,9 +138,23 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="emailId.invalid && (emailId.dirty || emailId.touched)"
+                >
+                  <div *ngIf="emailId.errors?.required">
+                    Email cannot be empty
+                  </div>
+                  <div *ngIf="emailId.errors?.pattern">
+                    Must follow pattern ex- Bhavna@lti.com
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="text"
+                    #bankName="ngModel"
+                    pattern="[a-zA-Z\s]+"
                     class="form-control"
                     placeholder="Bank name *"
                     name="bankName"
@@ -89,11 +162,23 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    bankName.invalid && (bankName.dirty || bankName.touched)
+                  "
+                >
+                  <div *ngIf="bankName.errors?.pattern">
+                    Enter valid Bank name
+                  </div>
+                </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <input
                     type="number"
+                    #accountNo="ngModel"
+                    pattern="[0-9]{12}"
                     class="form-control"
                     placeholder="Account No *"
                     name="accountNo"
@@ -101,9 +186,25 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    accountNo.invalid && (accountNo.dirty || accountNo.touched)
+                  "
+                >
+                  <div *ngIf="accountNo.errors?.required">
+                    Aadhar Number cannot be empty
+                  </div>
+                  <div *ngIf="accountNo.errors?.pattern">
+                    Must contain 12 number
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="text"
+                    #ifscCode="ngModel"
+                    pattern="[A-Z]{4}[0-9]{8}"
                     class="form-control"
                     placeholder="IFSC Code *"
                     name="ifscCode"
@@ -111,19 +212,55 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    ifscCode.invalid && (ifscCode.dirty || ifscCode.touched)
+                  "
+                >
+                  <div *ngIf="ifscCode.errors?.required">
+                    IFSC Code cannot be empty
+                  </div>
+                  <div *ngIf="ifscCode.errors?.pattern">
+                    Must follow pattern ex ="AAAA99999999"
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
                     type="text"
+                    #pancardNumber="ngModel"
+                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
                     class="form-control"
                     placeholder="PAN card No *"
                     name="pancardNumber"
                     [(ngModel)]="user.pancardNumber"
+                    maxlength="10"
+                    minlength="10"
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    pancardNumber.invalid &&
+                    (pancardNumber.dirty || pancardNumber.touched)
+                  "
+                >
+                  <div *ngIf="pancardNumber.errors?.required">
+                    PAN Number cannot be empty
+                  </div>
+                  <div *ngIf="pancardNumber.errors?.pattern">
+                    Must follow pattern ex ="AAAAA-9999-A"
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <input
-                    type="number"
+                    type="text"
+                    #aadharNumber="ngModel"
+                    pattern="[0-9]{12}"
+                    maxlength="12"
                     class="form-control"
                     placeholder="Aadhar Card No *"
                     name="aadharNumber"
@@ -131,6 +268,21 @@
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    aadharNumber.invalid &&
+                    (aadharNumber.dirty || aadharNumber.touched)
+                  "
+                >
+                  <div *ngIf="aadharNumber.errors?.required">
+                    Aadhar Number cannot be empty
+                  </div>
+                  <div *ngIf="aadharNumber.errors?.pattern">
+                    Must contain 12 number
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <div class="maxl">
                     <label class="radio inline">
@@ -158,13 +310,29 @@
                 <div class="form-group">
                   <input
                     type="password"
+                    #password="ngModel"
                     class="form-control"
                     placeholder="Password *"
                     name="password"
                     [(ngModel)]="user.password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     required
                   />
                 </div>
+                <div
+                  style="color: red"
+                  *ngIf="
+                    password.invalid && (password.dirty || password.touched)
+                  "
+                >
+                  <div *ngIf="password.errors?.required">
+                    Password cannot be empty
+                  </div>
+                  <div *ngIf="password.errors?.pattern">
+                    Must follow pattern
+                  </div>
+                </div>
+
                 <input type="submit" class="btnRegister" value="Register" />
               </div>
             </div>

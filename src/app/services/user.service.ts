@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { ChangePwd } from "../models/changepwd";
 import { ForgotPwd } from "../models/Forgotpwd";
 import { Login } from "../models/login";
 import { User } from "../models/user";
@@ -26,6 +27,12 @@ export class UserService {
   public payJoiningFee(userId: number): Observable<any> {
     return this.http.get<any>(
       "http://localhost:8181/payJoiningFee?userId=" + userId
+    );
+  }
+  public changepwd(changepwd: ForgotPwd): Observable<any> {
+    return this.http.post<any>(
+      "http://localhost:8181/changePassword",
+      changepwd
     );
   }
 }
