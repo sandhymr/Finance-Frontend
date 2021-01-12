@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { User } from "src/app/models/user";
 import { AdminService } from "src/app/services/admin.service";
 declare var $;
@@ -9,6 +10,7 @@ declare var $;
   styleUrls: ["./admin-dashboard.component.css"],
 })
 export class AdminDashboardComponent implements OnInit {
+  adminName = sessionStorage.getItem("userName");
   flag: boolean = false; //viewall
   show: boolean = true; //generatecardbtn
   users: User[];
@@ -17,7 +19,7 @@ export class AdminDashboardComponent implements OnInit {
   type: boolean = false; //searchform
   addproduct: boolean = false; //getaddproduct
   allproduct: boolean = false; //viewallproducts
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -106,5 +108,12 @@ export class AdminDashboardComponent implements OnInit {
     this.type = false;
     this.allproduct = true;
     this.addproduct = false;
+  }
+
+  logout() {
+    // sessionStorage.removeItem("userId");
+    // sessionStorage.removeItem("userName");
+    sessionStorage.clear();
+    this.router.navigate(["login"]);
   }
 }

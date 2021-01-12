@@ -29,7 +29,7 @@ export class UserService {
       "http://localhost:8181/payJoiningFee?userId=" + userId
     );
   }
-  public changepwd(changepwd: ForgotPwd): Observable<any> {
+  public changepwd(changepwd: ChangePwd): Observable<any> {
     return this.http.post<any>(
       "http://localhost:8181/changePassword",
       changepwd
