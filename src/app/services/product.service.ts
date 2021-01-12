@@ -12,4 +12,8 @@ export class ProductService {
   public viewAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>("http://localhost:8181/viewAllProducts");
   }
+
+  public viewProductByFilter(productType:String):Observable<Product[]>{
+    return this.http.get<Product[]>("http://localhost:8181/viewProductsByFilter?productType="+productType);
+  }
 }
