@@ -1,1 +1,102 @@
 <app-header></app-header>
+<div class="w3-content" style="
+    max-width: 2000px;
+    margin-top: 46px;
+    background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/07/credit-cards-4-steps-1920x1152.jpg');
+  ">
+    <p *ngIf="flag; then ifb; else elsepart"></p>
+    <ng-template #ifb>
+        <p *ngIf="cardTypebool; then ifb1; else else1"></p>
+        <ng-template #ifb1>
+            <div class="col d-flex justify-content-center">
+                <div class="card bg-dark text-white" style="width: 50%; height: 50%">
+                    <img class="card-img" src="https://image.freepik.com/free-photo/gold-background-texture_44865-93.jpg"
+                        alt="Card image" />
+                    <div class="card-img-overlay">
+                        <h2 class="card-title">Card Type: Gold</h2>
+                        <h1 style="margin-left: 200px; margin-top: 150px;">{{result.cardId}}    {{result.cardId}}</h1>
+                        <h4 class="card-text" style="margin-top: 60px;">
+                            Name: {{userName}}
+                        </h4>
+                        <p class="card-text">Status: Activated</p>
+                        <p>Total Credit: {{totalCredit}}</p>
+                        <p>Validity Till: {{validityTill}}</p>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #else1>
+            <div class="col d-flex justify-content-center">
+                <div class="card bg-dark text-white" style="width: 50%; height: 50%">
+                    <img class="card-img" src="https://www.teahub.io/photos/full/241-2416146_titanium-background.jpg"
+                        alt="Card image" />
+                    <div class="card-img-overlay">
+                        <h2 class="card-title">Card Type: Titanium</h2>
+                        <h1 style="margin-left: 200px; margin-top: 150px;">{{result.cardId}}    {{result.cardId}}</h1>
+                        <h4 class="card-text" style="margin-top: 60px;">
+                            Name: {{userName}}
+                        </h4>
+                        <h5 class="card-text">Status: Activated</h5>
+                        <h5>Total Credit: {{totalCredit}}</h5>
+                        <h5>Validity Till: {{validityTill}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+    </ng-template>
+    <ng-template #elsepart>
+        <div class="col d-flex justify-content-center">
+            <div class="card bg-dark text-white" style="width: 50%; height: 50%;">
+                <img class="card-img"
+                    src="https://www.solidbackgrounds.com/images/1920x1080/1920x1080-red-solid-color-background.jpg"
+                    alt="Card image" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Card Details: Deactivated</h5>
+                    <p class="card-text">
+                        Name: {{userName}}
+                    </p>
+                    <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+    <div class="card border-dark mb-3" style="max-width: 70rem; height: 20rem; margin-bottom: 100px; margin-left: 250px; background-color: lightgray;">
+        
+        <div class="card-body text-primary">
+          <h2 class="card-title">Transactions</h2>
+          <div class="card-group">
+            <div class="card">
+              
+              <div class="card-body">
+                <h5 class="card-title">Transaction 1</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">28/12/2020</small></p>
+              </div>
+            </div>
+            <div class="card">
+              
+              <div class="card-body">
+                <h5 class="card-title">Transaction 2</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">26/12/2020</small></p>
+              </div>
+            </div>
+            <div class="card">
+              
+              <div class="card-body">
+                <h5 class="card-title">Transaction 3</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">24/12/2020</small></p>
+              </div>
+            </div>
+            
+          </div>
+          <button class="w3-button w3-black w3-margin-bottom" style="float: right; margin-top: 10px;" [routerLink]="['/products']">View All</button>
+        </div>
+      </div>
+      <br>
+</div>
