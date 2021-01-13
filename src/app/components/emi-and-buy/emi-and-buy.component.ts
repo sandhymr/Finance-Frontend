@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { EmiSchemadetails, Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { User } from "src/app/models/user";
@@ -22,7 +23,8 @@ export class EmiAndBuyComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private userService: UserService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -70,6 +72,9 @@ export class EmiAndBuyComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
+        this.router.navigate(["invoice"], {
+          queryParams: { transaction: JSON.stringify(this.result) },
+        });
       } else {
         alert(this.result.message);
       }
