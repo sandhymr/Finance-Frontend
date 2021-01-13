@@ -19,6 +19,7 @@ export class AdminDashboardComponent implements OnInit {
   type: boolean = false; //searchform
   addproduct: boolean = false; //getaddproduct
   allproduct: boolean = false; //viewallproducts
+  addFAQ: boolean = false; //addFaq
   constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit() {}
@@ -27,6 +28,7 @@ export class AdminDashboardComponent implements OnInit {
     this.type = false;
     this.allproduct = false;
     this.addproduct = false;
+    this.addFAQ = false;
     this.adminService.viewAllNotCardHolders().subscribe((data) => {
       if (data != null) {
         this.flag = true;
@@ -59,6 +61,7 @@ export class AdminDashboardComponent implements OnInit {
     this.type = false;
     this.addproduct = false;
     this.allproduct = false;
+    this.addFAQ = false;
     this.show = false;
     this.adminService.viewAllCardHolders().subscribe((data) => {
       if (data != null) {
@@ -76,12 +79,14 @@ export class AdminDashboardComponent implements OnInit {
     this.flag = false;
     this.allproduct = false;
     this.addproduct = false;
+    this.addFAQ = false;
   }
 
   search() {
     this.show = false;
     this.addproduct = false;
     this.allproduct = false;
+    this.addFAQ = false;
     this.adminService
       .viewCardHoldersByType(this.user.cardType)
       .subscribe((data) => {
@@ -99,15 +104,23 @@ export class AdminDashboardComponent implements OnInit {
     this.type = false;
     this.allproduct = false;
     this.addproduct = true;
+    this.addFAQ = false;
   }
 
-  addFaq() {}
+  addFaq() {
+    this.flag = false;
+    this.type = false;
+    this.allproduct = false;
+    this.addproduct = false;
+    this.addFAQ = true;
+  }
 
   allProducts() {
     this.flag = false;
     this.type = false;
     this.allproduct = true;
     this.addproduct = false;
+    this.addFAQ = false;
   }
 
   logout() {
