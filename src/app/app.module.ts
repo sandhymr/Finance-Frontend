@@ -21,6 +21,7 @@ import { PayJoiningFeeComponent } from "./components/pay-joining-fee/pay-joining
 import { AdminDashboardComponent } from "./components/admin-dashboard/admin-dashboard.component";
 import { UserDetailsComponent } from "./components/user-details/user-details.component";
 import { AddProductComponent } from "./components/add-product/add-product.component";
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AddProductComponent } from "./components/add-product/add-product.compon
     AdminDashboardComponent,
     UserDetailsComponent,
     AddProductComponent,
+    InvoiceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
