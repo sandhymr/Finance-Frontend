@@ -119,8 +119,8 @@ export class AdminDashboardComponent implements OnInit {
     this.flag = false;
     this.type = false;
     this.allproduct = true;
-    this.addproduct = false;
     this.addFAQ = false;
+    this.addproduct = false;
   }
 
   logout() {
