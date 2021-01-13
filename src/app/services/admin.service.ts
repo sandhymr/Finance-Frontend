@@ -29,6 +29,10 @@ export class AdminService {
     return this.http.post<Product>("http://localhost:8181/addProduct", product);
   }
 
+    public addFaq(faq: FrequentlyAskedQuestions): Observable<FrequentlyAskedQuestions> {
+    return this.http.post<FrequentlyAskedQuestions>("http://localhost:8181/addFaq", faq);
+  }
+
   public generateCard(userId: number): Observable<any> {
     return this.http.get<any>(
       "http://localhost:8181/generateCard?userId=" + userId

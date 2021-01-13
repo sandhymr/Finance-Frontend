@@ -23,11 +23,13 @@ export class LoginComponent implements OnInit {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
+        sessionStorage.setItem("cardType",this.result.cardType);
         this.router.navigate(["dashboard"]);
       } else if (this.result.status == "ADMIN") {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
+        sessionStorage.setItem("admin", "Admin");
         this.router.navigate(["adminDashboard"]);
       } else {
         alert(this.result.message);

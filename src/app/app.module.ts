@@ -21,6 +21,9 @@ import { PayJoiningFeeComponent } from "./components/pay-joining-fee/pay-joining
 import { AdminDashboardComponent } from "./components/admin-dashboard/admin-dashboard.component";
 import { UserDetailsComponent } from "./components/user-details/user-details.component";
 import { AddProductComponent } from "./components/add-product/add-product.component";
+import { EmiAndBuyComponent } from "./components/emi-and-buy/emi-and-buy.component";
+import { InvoiceComponent } from "./components/invoice/invoice.component";
+import { AddFAQComponent } from "./components/add-faq/add-faq.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { AddProductComponent } from "./components/add-product/add-product.compon
     AdminDashboardComponent,
     UserDetailsComponent,
     AddProductComponent,
+    EmiAndBuyComponent,
+    InvoiceComponent,
+    AddFAQComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

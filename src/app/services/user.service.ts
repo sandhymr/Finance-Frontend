@@ -35,4 +35,15 @@ export class UserService {
       changepwd
     );
   }
+
+  public findUserById(userId: number): Observable<User> {
+    return this.http.get<User>(
+      "http://localhost:8181/findUserById?userId=" + userId
+    );
+  }
+  public getCardById(userId: number): Observable<any> {
+    return this.http.get<any>(
+      "http://localhost:8181/findCardbyUserId?userId=" + userId
+    );
+  }
 }
