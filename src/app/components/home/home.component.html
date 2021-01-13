@@ -119,29 +119,45 @@
         <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>
       </ul> -->
 
-      <div class="w3-row-padding w3-padding-32" style="margin: 0 -16px">
-        <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%">
-          <img
-            src="https://blog.mozilla.org/wp-content/uploads/2017/03/real-mobile-2x-1400x770.png"
-            alt="New York"
-            style="width: 100%"
-            class="w3-hover-opacity"
-          />
-          <div class="w3-container w3-white">
-            <p><b>Mobiles</b></p>
-            <p class="w3-opacity">₹5000-₹45000</p>
-            <p>
-              Explore the exotic ranges of mobiles and experience the power of
-              technology.
-            </p>
-            <button
-              class="w3-button w3-black w3-margin-bottom"
-              [routerLink]="['/products']"
-              (click)="viewProductByType('Mobile')"
-            >
-              View
-            </button>
-          </div>
+                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                    <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%;">
+                        <img src="https://blog.mozilla.org/wp-content/uploads/2017/03/real-mobile-2x-1400x770.png"
+                            alt="New York" style="width:100%" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>Mobiles</b></p>
+                            <p class="w3-opacity">₹5000-₹45000</p>
+                            <p>Explore the exotic ranges of mobiles and experience the power of technology.</p>
+                            <button class="w3-button w3-black w3-margin-bottom"
+                            [routerLink]="['/products']" (click)="viewProductByType('Mobile')">View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%;">
+                        <img src="https://banner2.cleanpng.com/20180418/kle/kisspng-surface-pro-3-surface-pro-4-surface-book-2-pc-5ad77f705db4a8.5784371715240723043838.jpg"
+                            alt="Paris" style="width:100%" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>Laptops</b></p>
+                            <p class="w3-opacity">₹30000-₹1,00000</p>
+                            <p>Explore the exotic ranges of Laptops and experience the power of technology.</p>
+                            <button class="w3-button w3-black w3-margin-bottom"
+                            [routerLink]="['/products']" (click)="viewProductByType('Laptop')">View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%;">
+                        <img src="https://www.thetrendspotter.net/wp-content/uploads/2020/01/Luxury-Watch-Brands.jpg"
+                            alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                        <div class="w3-container w3-white">
+                            <p><b>Watches</b></p>
+                            <p class="w3-opacity">₹2000-₹100000</p>
+                            <p>One can expect an agreement between philosophers sooner than between clocks.</p>
+                            <button class="w3-button w3-black w3-margin-bottom"
+                            [routerLink]="['/products']" (click)="viewProductByType('Watch')">View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%">
           <img
@@ -254,13 +270,47 @@
           />
         </div>
 
-        <div class="w3-third" style="padding: 25px; width: 150px">
-          <img
-            class="card-img-top"
-            src="https://img.etimg.com/thumb/msid-71765131,width-300,imgsize-180986,,resizemode-4,quality-100/icici-bank-others.jpg"
-            alt="Card image"
-          />
-        </div>
+        <!-- The Contact Section -->
+        <div class="w3-container w3-content w3-padding-16" style="max-width:800px" id="contact">
+            <h2 class="w3-wide w3-center">Our Partners</h2>
+            <p class="w3-opacity w3-center"><i></i></p>
+            <div class="w3-row w3-padding-32">
+
+                <div class="w3-row w3-padding-32">
+                    <div class="w3-third" style="width: 100px;">
+
+                        <img class="card-img-top"
+                            src="https://www.searchpng.com/wp-content/uploads/2019/01/Hdfc-Logo-715x715.png"
+                            alt="Card image">
+                    </div>
+
+                    <div class="w3-third" style="padding: 25px; width: 150px;">
+
+                        <img class="card-img-top"
+                            src="https://img.etimg.com/thumb/msid-71765131,width-300,imgsize-180986,,resizemode-4,quality-100/icici-bank-others.jpg"
+                            alt="Card image">
+                    </div>
+
+                    <div class="w3-third" style="padding: 25px; width: 150px;">
+
+                        <img class="card-img-top"
+                            src="https://www.logo-designer.co/wp-content/uploads/2017/04/2017-Design-Stack-new-logo-design-State-Bank-of-India.png"
+                            alt="Card image">
+                    </div>
+                    <div class="w3-third" style="padding: 25px; width: 150px;">
+
+                        <img class="card-img-top"
+                            src="https://buddybits.com/wp-content/uploads/2018/07/Kotak-Mahindra-Bank-Logo.png"
+                            alt="Card image">
+                    </div>
+
+                    <div class="w3-third" style="padding: 25px; width: 150px;">
+
+                        <img class="card-img-top" src=" https://buddybits.com/wp-content/uploads/2018/07/Amazon.png"
+                            alt="Card image">
+                    </div>
+                    
+                </div>
 
         <div class="w3-third" style="padding: 25px; width: 150px">
           <img
