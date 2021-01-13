@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 
@@ -10,7 +11,8 @@ import { UserService } from "src/app/services/user.service";
 export class RegisterComponent implements OnInit {
   user: User = new User();
   result: any;
-  constructor(private userService: UserService) {}
+
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -19,6 +21,9 @@ export class RegisterComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
+        sessionStorage.setItem("userId", this.result.userId);
+        sessionStorage.setItem("cardType", this.result.cardType);
+        this.router.navigate(["registrationFee"]);
       } else {
         alert(this.result.message);
       }

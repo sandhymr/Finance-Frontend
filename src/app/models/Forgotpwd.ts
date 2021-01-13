@@ -1,5 +1,5 @@
 export class ForgotPwd {
-  emailId: String;
+  emailId: string;
   userId: number;
-  password: String;
+  password: string;
 }

@@ -21,7 +21,14 @@ export class LoginComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
-        this.router.navigate(["home"]);
+        sessionStorage.setItem("userId", this.result.userId);
+        sessionStorage.setItem("userName", this.result.userName);
+        this.router.navigate(["dashboard"]);
+      } else if (this.result.status == "ADMIN") {
+        alert(this.result.message);
+        sessionStorage.setItem("userId", this.result.userId);
+        sessionStorage.setItem("userName", this.result.userName);
+        this.router.navigate(["adminDashboard"]);
       } else {
         alert(this.result.message);
       }

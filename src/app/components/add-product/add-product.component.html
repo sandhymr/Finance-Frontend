@@ -1,0 +1,46 @@
+<form #productForm="ngForm" (ngSubmit)="addProduct()">
+  <div class="form-group">
+    <label>Product Name :</label>
+    <input
+      type="text"
+      class="form-control"
+      name="productName"
+      [(ngModel)]="product.productName"
+    />
+  </div>
+  <div class="form-group">
+    <label>Product Description :</label>
+    <input
+      type="text"
+      class="form-control"
+      name="productDescription"
+      [(ngModel)]="product.productDescription"
+    />
+  </div>
+  <div class="form-group">
+    <label>Price :</label>
+    <input
+      type="text"
+      class="form-control"
+      name="price"
+      [(ngModel)]="product.price"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Product Imag Url :</label>
+    <input
+      class="form-control"
+      name=" productImageUrl"
+      [(ngModel)]="product.productImageUrl"
+    />
+  </div>
+  <div class="form-group">
+    <label>Product Type : </label>
+    <input
+      class="form-control"
+      name=" productType"
+      [(ngModel)]="product.productType"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Add Product</button>
+</form>

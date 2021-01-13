@@ -14,4 +14,7 @@ export class User {
   pancardNumber: string;
   aadharNumber: number;
   cardType: string;
+
+  cardStatus: number;
+  registrationFee: number;
 }

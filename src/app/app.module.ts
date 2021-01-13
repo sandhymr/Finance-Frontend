@@ -16,7 +16,11 @@ import { ProductDetailsComponent } from "./components/product-details/product-de
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from "./components/home/home.component";
+import { PayJoiningFeeComponent } from "./components/pay-joining-fee/pay-joining-fee.component";
+import { AdminDashboardComponent } from "./components/admin-dashboard/admin-dashboard.component";
+import { UserDetailsComponent } from "./components/user-details/user-details.component";
+import { AddProductComponent } from "./components/add-product/add-product.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { HomeComponent } from './components/home/home.component';
     ProductDetailsComponent,
     DashboardComponent,
     HomeComponent,
+    PayJoiningFeeComponent,
+    AdminDashboardComponent,
+    UserDetailsComponent,
+    AddProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
