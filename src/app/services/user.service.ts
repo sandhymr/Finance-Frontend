@@ -35,4 +35,7 @@ export class UserService {
       changepwd
     );
   }
+  public getCardById(userId:number): Observable<any>{
+    return this.http.get<any>('http://localhost:8181/findCardbyUserId?userId='+userId);
+  }
 }
