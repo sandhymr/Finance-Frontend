@@ -1,18 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  userName: string = sessionStorage.getItem("userName");
+  flag: boolean = false;
+  constructor(private router: Router) {}
 
   ngOnInit() {
+    this.navbarShow();
   }
 
-  logout(){
-
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate(["home"]);
+  }
+  navbarShow() {
+    if (sessionStorage.getItem("userId") != null) {
+      this.flag = true;
+    } else {
+      this.flag = false;
+    }
   }
 }
