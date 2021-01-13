@@ -10,6 +10,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { PayJoiningFeeComponent } from "./components/pay-joining-fee/pay-joining-fee.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { InvoiceComponent } from "./components/invoice/invoice.component";
+import { AddFAQComponent } from "./components/add-faq/add-faq.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: "registrationFee", component: PayJoiningFeeComponent },
   { path: "adminDashboard", component: AdminDashboardComponent },
   { path: "buyProduct", component: EmiAndBuyComponent },
+  { path: "invoice", component: InvoiceComponent },
+  { path: "addFaq", component: AddFAQComponent },
 ];
 
 @NgModule({
