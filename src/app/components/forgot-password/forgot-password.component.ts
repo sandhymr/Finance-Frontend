@@ -22,6 +22,7 @@ export class ForgotPasswordComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         this.flag = true;
+        sessionStorage.setItem("userId", this.result.userId);
         alert(this.result.message);
         console.log(this.result.otp);
       } else {

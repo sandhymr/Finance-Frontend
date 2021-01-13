@@ -39,15 +39,24 @@
       >Home</a
     >
     <a
+      *ngIf="!flag"
       [routerLink]="['/login']"
       class="w3-bar-item w3-button w3-padding-large w3-hide-small"
       >Login</a
     >
     <a
+      *ngIf="flag"
+      [routerLink]="['/dashboard']"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      >Dashboard</a
+    >
+    <a
+      *ngIf="!flag"
       [routerLink]="['/register']"
       class="w3-bar-item w3-button w3-padding-large w3-hide-small"
       >Register</a
     >
+
     <a
       [routerLink]="['/products']"
       class="w3-bar-item w3-button w3-padding-large w3-hide-small"
@@ -57,6 +66,15 @@
       href="#aboutus"
       class="w3-bar-item w3-button w3-padding-large w3-hide-small"
       >About us</a
+    >
+    <a
+      *ngIf="flag"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      (click)="logout()"
+      >Logout</a
+    >
+    <b *ngIf="flag" style="float: right; padding-top: 10px"
+      >Welcome back {{ userName }}!!</b
     >
   </div>
 </div>

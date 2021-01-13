@@ -23,6 +23,7 @@ export class ChangePasswordComponent implements OnInit {
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
         console.log(this.result.status);
+        sessionStorage.clear();
         this.router.navigate(["login"]);
       } else {
         alert(this.result.message);
