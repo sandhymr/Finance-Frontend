@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Product } from "src/app/models/product";
 import { ProductService } from "src/app/services/product.service";
 declare var $;
@@ -10,9 +11,10 @@ declare var $;
 export class ProductListComponent implements OnInit {
   products: Product[];
   showProducts: boolean = false;
+  showHeader: boolean = true;
   product: Product = new Product();
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.viewAllProducts();
@@ -27,6 +29,11 @@ export class ProductListComponent implements OnInit {
         this.showProducts = false;
       }
     });
+    if (sessionStorage.getItem("admin") != null) {
+      this.showHeader = false;
+    } else {
+      this.showHeader = true;
+    }
   }
 
   viewProduct(product: Product) {
@@ -34,5 +41,12 @@ export class ProductListComponent implements OnInit {
     $("#productModal").modal("show");
   }
 
-  buy() {}
+  buy(details: Product) {
+    if (sessionStorage.getItem("userId") != null) {
+      sessionStorage.setItem("productId", details.productId.toString());
+      this.router.navigate(["buyProduct"]);
+    } else {
+      this.router.navigate(["login"]);
+    }
+  }
 }

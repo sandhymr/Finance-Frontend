@@ -13,7 +13,15 @@ export class ProductService {
     return this.http.get<Product[]>("http://localhost:8181/viewAllProducts");
   }
 
-  public viewProductByFilter(productType:String):Observable<Product[]>{
-    return this.http.get<Product[]>("http://localhost:8181/viewProductsByFilter?productType="+productType);
+  public viewProductByFilter(productType: String): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      "http://localhost:8181/viewProductsByFilter?productType=" + productType
+    );
+  }
+
+  public findProductByProductId(productId: number): Observable<Product> {
+    return this.http.get<Product>(
+      "http://localhost:8181/findProductById?productId=" + productId
+    );
   }
 }

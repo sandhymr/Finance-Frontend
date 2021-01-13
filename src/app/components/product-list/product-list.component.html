@@ -1,5 +1,6 @@
-<app-header></app-header>
-
+<app-header *ngIf="showHeader"></app-header>
+<br />
+<br />
 <!-- <p>{{ product.productName }}</p> -->
 <div class="container">
   <div class="row">
@@ -48,7 +49,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">
-          <a style="text-decoration: none; color: white" (click)="buy()">Buy</a>
+          <a style="text-decoration: none; color: white" (click)="buy(product)"
+            >Buy</a
+          >
         </button>
       </div>
     </div>
