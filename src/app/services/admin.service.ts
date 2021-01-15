@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { FrequentlyAskedQuestions } from "../models/faq";
 import { Product } from "../models/product";
 import { User } from "../models/user";
+import { Document } from "src/app/models/document";
 
 @Injectable({
   providedIn: "root",
@@ -38,4 +39,13 @@ export class AdminService {
       "http://localhost:8181/generateCard?userId=" + userId
     );
   }
+
+  public download(doc: Document): Observable<Document> {
+   return this.http.post<Document>("http://localhost:8181/download", doc);
+  }
+  fetchProfile(id: number) : Observable<User> {
+    let url = "http://localhost:8181/viewDoc?userId="+id;
+   return this.http.get<User>(url); 
+  }
 }
+

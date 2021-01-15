@@ -24,6 +24,8 @@ import { AddProductComponent } from "./components/add-product/add-product.compon
 import { EmiAndBuyComponent } from "./components/emi-and-buy/emi-and-buy.component";
 import { InvoiceComponent } from "./components/invoice/invoice.component";
 import { AddFAQComponent } from "./components/add-faq/add-faq.component";
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import { DownloadComponent } from './components/download/download.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { AddFAQComponent } from "./components/add-faq/add-faq.component";
     EmiAndBuyComponent,
     InvoiceComponent,
     AddFAQComponent,
+    DocumentUploadComponent,
+    DownloadComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

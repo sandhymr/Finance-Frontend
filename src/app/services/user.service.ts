@@ -46,4 +46,8 @@ export class UserService {
       "http://localhost:8181/findCardbyUserId?userId=" + userId
     );
   }
+  public docUpload(formData: FormData) : Observable<any> {
+    let url = "http://localhost:8181/uploadDocuments";
+   return this.http.post(url, formData); 
+  }
 }
