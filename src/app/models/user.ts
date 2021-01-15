@@ -7,6 +7,7 @@ export class User {
   emailId: string;
   mobileNo: string;
   password: string;
+  confirmPassword: string;
   address: string;
   bankName: string;
   accountNo: number;
