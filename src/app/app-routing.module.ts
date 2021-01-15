@@ -14,6 +14,9 @@ import { InvoiceComponent } from "./components/invoice/invoice.component";
 import { AddFAQComponent } from "./components/add-faq/add-faq.component";
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { DownloadComponent } from './components/download/download.component';
+import { TransactioncompComponent } from "./components/transactioncomp/transactioncomp.component";
+import { ProductpurchasedComponent } from "./components/productpurchased/productpurchased.component";
+
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
@@ -30,6 +33,8 @@ const routes: Routes = [
   { path: "addFaq", component: AddFAQComponent },
   { path: "docUpload", component: DocumentUploadComponent },
   { path: "download", component: DownloadComponent },
+  { path: "viewAllTransactions", component: TransactioncompComponent },
+  { path: "productsPurchased", component: ProductpurchasedComponent },
 ];
 
 @NgModule({

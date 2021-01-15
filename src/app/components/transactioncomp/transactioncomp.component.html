@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="w3-content" style="
+    max-width: 2000px;
+    height: auto;
+    margin-top: 46px;
+    background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/07/credit-cards-4-steps-1920x1152.jpg');
+  ">
+    <div class="card border-dark mb-3"
+        style="max-width: 70rem; height: auto; margin-bottom: 100px; margin-left: 250px; background-color: lightgray; margin-bottom: 100px;">
+        <div class="card-body text-primary">
+            <h2 class="card-title">All Transactions</h2>
+            <table class="table table-hover" style="margin-top: 40px;border: 2px solid black;">
+                <thead class="table-dark">
+                    <tr style="height: 70px;">
+                        <th scope="col">Transaction Id</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Emi Scheme</th>
+                        <th scope="col">Amount Paid</th>
+                        <th scope="col">Transaction Date</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of transactions" style="height: 70px;">
+                        <a (click)="viewIndividualTransactions(t.transactionId)"><th scope="row">{{t.transactionId}}</th></a>
+                        <td>{{t.productName}}</td>
+                        <td>{{t.product_price}}</td>
+                        <td>{{t.emiScheme}}</td>
+                        <td>{{t.amount_paid}}</td>
+                        <td>{{t.transaction_date}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

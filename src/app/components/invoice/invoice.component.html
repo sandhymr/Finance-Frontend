@@ -48,6 +48,12 @@
         <td>{{ transaction.amount_paid }}</td>
       </tr>
       <tr>
+        <th>Amount Remaining</th>
+        <td *ngIf="transaction.amount_remaining >= 0">
+          {{ transaction.amount_remaining }}
+        </td>
+      </tr>
+      <tr>
         <th>EMI Scheme</th>
         <td>{{ transaction.emiScheme }} Months</td>
       </tr>

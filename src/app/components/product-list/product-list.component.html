@@ -1,11 +1,24 @@
 <app-header *ngIf="showHeader"></app-header>
 <br />
-<br />
 <!-- <p>{{ product.productName }}</p> -->
 <div class="container">
   <div class="row">
     <div *ngFor="let product of products" class="col-md-3 thumbnail">
-      <a (click)="viewProduct(product)">
+      <div class="card" style="width: 20em; height: 24em">
+        <a (click)="viewProduct(product)">
+          <img
+            [src]="product.productImageUrl"
+            alt="watch"
+            width="100px"
+            height="200px"
+          />
+          <div class="card-body">
+            <p class="card-text">{{ product.productName }}</p>
+          </div>
+        </a>
+      </div>
+
+      <!--
         <img
           [src]="product.productImageUrl"
           alt="watch"
@@ -14,8 +27,8 @@
         />
         <div class="caption">
           <p>{{ product.productName }}</p>
-        </div>
-      </a>
+        </div> -->
+      <!-- </a> -->
     </div>
   </div>
 </div>
@@ -47,7 +60,7 @@
           [product]="product"
         ></app-product-details>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" *ngIf="showHeader">
         <button type="button" class="btn btn-primary" data-dismiss="modal">
           <a style="text-decoration: none; color: white" (click)="buy(product)"
             >Buy</a

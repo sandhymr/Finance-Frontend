@@ -12,6 +12,7 @@ import { UserService } from "src/app/services/user.service";
 export class LoginComponent implements OnInit {
   log: Login = new Login();
   result: any;
+  fee: number = 0;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -23,8 +24,14 @@ export class LoginComponent implements OnInit {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
-        sessionStorage.setItem("cardType",this.result.cardType);
-        this.router.navigate(["dashboard"]);
+        sessionStorage.setItem("cardType", this.result.cardType);
+        sessionStorage.setItem("registrationFee", this.result.registrationFee);
+        this.fee = parseInt(sessionStorage.getItem("registrationFee"));
+        if (this.fee == 0) {
+          this.router.navigate(["registrationFee"]);
+        } else {
+          this.router.navigate(["dashboard"]);
+        }
       } else if (this.result.status == "ADMIN") {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);

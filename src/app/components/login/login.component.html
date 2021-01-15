@@ -18,9 +18,9 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5" style="margin-top: 60px; ">
           <form #loginForm="ngForm" (ngSubmit)="login()">
-            <div class="card2 card border-0 px-4 py-5">
+            <div class="card2 card border-3 px-4 py-5">
               <div class="row px-3">
                 <label class="mb-1">
                   <h6 class="mb-0 text-sm">Email Address</h6>
@@ -45,7 +45,7 @@
                 />
               </div>
               <div class="row px-3 mb-4">
-                <a [routerLink]="['/forgotPwd']" class="ml-auto mb-0 text-sm"
+                <a [routerLink]="['/forgotPwd']" class="ml-auto mb-0 text-sm" 
                   >Forgot Password?</a
                 >
               </div>
@@ -55,7 +55,7 @@
                 </button>
               </div>
               <div class="row mb-4 px-3">
-                <small class="font-weight-bold"
+                <small class="font-weight-bold" style="font-size:small;"
                   >Don't have an account?
                   <a class="text-danger" [routerLink]="['/register']"
                     >Register</a

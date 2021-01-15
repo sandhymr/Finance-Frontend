@@ -60,22 +60,15 @@
 <app-header></app-header>
 
 <!-- Page content -->
-<div
-  class="w3-content"
-  style="
+<div class="w3-content" style="
     max-width: 2000px;
     margin-top: 46px;
     background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/07/credit-cards-4-steps-1920x1152.jpg');
-  "
->
+  ">
   <!-- Automatic Slideshow Images -->
 
   <!-- The Band Section -->
-  <div
-    class="w3-container w3-content w3-center w3-padding-64"
-    style="max-width: 800px"
-    id="aboutus"
-  >
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width: 800px" id="aboutus">
     <h1 class="w3-wide">FinCare</h1>
     <h3 class="w3-opacity"><b>Purchasing made easy!</b></h3>
     <h4 class="w3-justify">
@@ -86,22 +79,44 @@
     <div class="w3-row w3-padding-32">
       <div class="w3-third" style="width: 50%">
         <h3>Titanium</h3>
-        <img
+        <!-- <img
           src="https://cdn.comparecards.com/uploads/images/items/4334.jpg"
           class="w3-round w3-margin-bottom"
           alt="Random Name"
           style="width: 80%"
-        />
+        /> -->
+        <div class="container">
+          <img class="w3-round w3-margin-bottom" src="https://cdn.comparecards.com/uploads/images/items/4334.jpg"
+            alt="Avatar" class="image">
+          <div class="overlay">
+            <div class="text">
+              <h4>Processing Fee : ₹ 2000</h4>
+              <h4>Total credit : ₹ 12000</h4>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="w3-third" style="float: right; width: 50%">
         <h3>Gold</h3>
-        <img
+        <!-- <img
           src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/Gold_Card.png"
           class="w3-round"
           alt="Random Name"
           style="width: 80%"
-        />
+        /> -->
+        <div class="container">
+          <img class="w3-round w3-margin-bottom"
+            src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/Gold_Card.png"
+            alt="Avatar" class="image">
+          <div class="overlay">
+            <div class="text">
+              <h4>Processing Fee : ₹ 2000</h4>
+              <h4>Total credit : ₹ 12000</h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -109,8 +124,8 @@
   <!-- The Tour Section -->
   <div id="products">
     <div class="w3-container w3-content w3-padding-64" style="max-width: 800px">
-      <h2 class="w3-wide w3-center">Products</h2>
-      <p class="w3-opacity w3-center"><i>Happy Purchasing!</i></p>
+      <h1 class="w3-wide w3-center">Products</h1>
+      <h3 class="w3-opacity w3-center"><i>Happy Purchasing!</i></h3>
       <br />
 
       <!-- <ul class="w3-ul w3-border w3-white w3-text-grey">
@@ -120,12 +135,8 @@
       </ul> -->
       <div class="w3-row-padding w3-padding-32" style="margin: 0 -16px">
         <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%">
-          <img
-            src="https://blog.mozilla.org/wp-content/uploads/2017/03/real-mobile-2x-1400x770.png"
-            alt="New York"
-            style="width: 100%"
-            class="w3-hover-opacity"
-          />
+          <img src="https://www.mymobileindia.com/wp-content/uploads/2020/07/infinix-smart-4plus.jpg" alt="New York"
+            style="width: 100%" class="w3-hover-opacity" />
           <div class="w3-container w3-white">
             <p><b>Mobiles</b></p>
             <p class="w3-opacity">₹5000-₹45000</p>
@@ -133,11 +144,8 @@
               Explore the exotic ranges of mobiles and experience the power of
               technology.
             </p>
-            <button
-              class="w3-button w3-black w3-margin-bottom"
-              [routerLink]="['/products']"
-              (click)="viewProductByType('Mobile')"
-            >
+            <button class="w3-button w3-black w3-margin-bottom" [routerLink]="['/products']"
+              (click)="viewProductByType('Mobile')">
               View
             </button>
           </div>
@@ -145,10 +153,7 @@
         <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%">
           <img
             src="https://banner2.cleanpng.com/20180418/kle/kisspng-surface-pro-3-surface-pro-4-surface-book-2-pc-5ad77f705db4a8.5784371715240723043838.jpg"
-            alt="Paris"
-            style="width: 100%"
-            class="w3-hover-opacity"
-          />
+            alt="Paris" style="width: 100%" class="w3-hover-opacity" />
           <div class="w3-container w3-white">
             <p><b>Laptops</b></p>
             <p class="w3-opacity">₹30000-₹1,00000</p>
@@ -156,11 +161,8 @@
               Explore the exotic ranges of Laptops and experience the power of
               technology.
             </p>
-            <button
-              class="w3-button w3-black w3-margin-bottom"
-              [routerLink]="['/products']"
-              (click)="viewProductByType('Laptop')"
-            >
+            <button class="w3-button w3-black w3-margin-bottom" [routerLink]="['/products']"
+              (click)="viewProductByType('Laptop')">
               View
             </button>
           </div>
@@ -168,19 +170,13 @@
         <div class="w3-third w3-margin-bottom" style="height: 35%; width: 30%">
           <img
             src="https://images.gessato.com/NvJJUR8.OWDa~b707/w:768/h:539/q:100/https://www.gessato.com/wp-content/uploads/2018/12/zeitgeist-aquaholic-watch-1.jpg"
-            alt="San Francisco"
-            style="width: 100%"
-            class="w3-hover-opacity"
-          />
+            alt="San Francisco" style="width: 100%" class="w3-hover-opacity" />
           <div class="w3-container w3-white">
             <p><b>Watches</b></p>
             <p class="w3-opacity">₹2000-₹100000</p>
             <p>One can expect an agreement between philosophers</p>
-            <button
-              class="w3-button w3-black w3-margin-bottom"
-              [routerLink]="['/products']"
-              (click)="viewProductByType('Watch')"
-            >
+            <button class="w3-button w3-black w3-margin-bottom" [routerLink]="['/products']"
+              (click)="viewProductByType('Watch')">
               View
             </button>
           </div>
@@ -193,44 +189,27 @@
       <div id="ticketModal" class="w3-modal">
         <div class="w3-modal-content w3-animate-top w3-card-4">
           <header class="w3-container w3-teal w3-center w3-padding-32">
-            <span
-              onclick="document.getElementById('ticketModal').style.display='none'"
-              class="w3-button w3-teal w3-xlarge w3-display-topright"
-              >×</span
-            >
+            <span onclick="document.getElementById('ticketModal').style.display='none'"
+              class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
             <h2 class="w3-wide">
               <i class="fa fa-suitcase w3-margin-right"></i>Tickets
             </h2>
           </header>
           <div class="w3-container">
             <p>
-              <label
-                ><i class="fa fa-shopping-cart"></i> Tickets, $15 per
-                person</label
-              >
+              <label><i class="fa fa-shopping-cart"></i> Tickets, $15 per
+                person</label>
             </p>
-            <input
-              class="w3-input w3-border"
-              type="text"
-              placeholder="How many?"
-            />
+            <input class="w3-input w3-border" type="text" placeholder="How many?" />
             <p>
               <label><i class="fa fa-user"></i> Send To</label>
             </p>
-            <input
-              class="w3-input w3-border"
-              type="text"
-              placeholder="Enter email"
-            />
-            <button
-              class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right"
-            >
+            <input class="w3-input w3-border" type="text" placeholder="Enter email" />
+            <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">
               PAY <i class="fa fa-check"></i>
             </button>
-            <button
-              class="w3-button w3-red w3-section"
-              onclick="document.getElementById('ticketModal').style.display='none'"
-            >
+            <button class="w3-button w3-red w3-section"
+              onclick="document.getElementById('ticketModal').style.display='none'">
               Close <i class="fa fa-remove"></i>
             </button>
             <p class="w3-right">
@@ -242,52 +221,36 @@
     </div>
 
     <!-- The Contact Section -->
-    <div
-      class="w3-container w3-content w3-padding-32"
-      style="max-width: 800px"
-      id="contact"
-    >
+    <div class="w3-container w3-content w3-padding-32" style="max-width: 800px" id="contact">
       <h2 class="w3-wide w3-center">Our Partners</h2>
       <p class="w3-opacity w3-center"><i></i></p>
       <div class="w3-row w3-padding-32">
         <div class="w3-row w3-padding-32">
           <div class="w3-third" style="width: 100px">
-            <img
-              class="card-img-top"
-              src="https://www.searchpng.com/wp-content/uploads/2019/01/Hdfc-Logo-715x715.png"
-              alt="Card image"
-            />
+            <img class="card-img-top" src="https://www.searchpng.com/wp-content/uploads/2019/01/Hdfc-Logo-715x715.png"
+              alt="Card image" style="width: 100%;" class="w3-hover-opacity"  />
           </div>
 
           <div class="w3-third" style="padding: 25px; width: 150px">
-            <img
-              class="card-img-top"
+            <img class="card-img-top"
               src="https://www.logo-designer.co/wp-content/uploads/2017/04/2017-Design-Stack-new-logo-design-State-Bank-of-India.png"
-              alt="Card image"
-            />
+              alt="Card image" style="width: 100%;" class="w3-hover-opacity" />
           </div>
           <div class="w3-third" style="padding: 25px; width: 150px">
-            <img
-              class="card-img-top"
-              src="https://buddybits.com/wp-content/uploads/2018/07/Kotak-Mahindra-Bank-Logo.png"
-              alt="Card image"
-            />
+            <img class="card-img-top"
+              src="https://buddybits.com/wp-content/uploads/2018/07/Kotak-Mahindra-Bank-Logo.png" 
+              alt="Card image" style="width: 100%;" class="w3-hover-opacity" />
           </div>
 
           <div class="w3-third" style="padding: 25px; width: 150px">
-            <img
-              class="card-img-top"
-              src=" https://buddybits.com/wp-content/uploads/2018/07/Amazon.png"
-              alt="Card image"
-            />
+            <img class="card-img-top" src=" https://buddybits.com/wp-content/uploads/2018/07/Amazon.png"
+              alt="Card image" style="width: 100%;" class="w3-hover-opacity"/>
           </div>
 
           <div class="w3-third" style="padding: 25px; width: 150px">
-            <img
-              class="card-img-top"
+            <img class="card-img-top"
               src="https://img.etimg.com/thumb/msid-71765131,width-300,imgsize-180986,,resizemode-4,quality-100/icici-bank-others.jpg"
-              alt="Card image"
-            />
+              alt="Card image" style="width: 100%;" class="w3-hover-opacity"/>
           </div>
         </div>
       </div>
@@ -309,9 +272,7 @@
         <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
         </p>
     </footer> -->
-    <footer
-      class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge"
-    >
+    <footer class="w3-container w3-padding-32 w3-center w3-opacity w3-light-grey w3-xlarge">
       Copyright &copy; FinCare.com 2021
     </footer>
 

@@ -26,6 +26,8 @@ import { InvoiceComponent } from "./components/invoice/invoice.component";
 import { AddFAQComponent } from "./components/add-faq/add-faq.component";
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { DownloadComponent } from './components/download/download.component';
+import { TransactioncompComponent } from './components/transactioncomp/transactioncomp.component';
+import { ProductpurchasedComponent } from './components/productpurchased/productpurchased.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { DownloadComponent } from './components/download/download.component';
     AddFAQComponent,
     DocumentUploadComponent,
     DownloadComponent,
+    TransactioncompComponent,
+    ProductpurchasedComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
