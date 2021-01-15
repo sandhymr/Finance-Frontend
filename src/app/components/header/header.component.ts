@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     sessionStorage.clear();
     this.router.navigate(["home"]);
+    alert("logout successfully!");
+   
   }
   navbarShow() {
     if (sessionStorage.getItem("userId") != null) {
