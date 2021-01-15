@@ -10,7 +10,8 @@ import { UserService } from "src/app/services/user.service";
 export class PayJoiningFeeComponent implements OnInit {
   @Input()
   userId: number = parseInt(sessionStorage.getItem("userId"));
-  cardType = sessionStorage.getItem("cardType");
+  cardType: string = sessionStorage.getItem("cardType");
+  userName: string = sessionStorage.getItem("userName");
   result: any;
   flag: boolean = false;
   // cardType: CardType;
@@ -32,7 +33,11 @@ export class PayJoiningFeeComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
-        this.router.navigate(["login"]);
+        if (this.userName != null) {
+          this.router.navigate(["dashboard"]);
+        } else {
+          this.router.navigate(["login"]);
+        }
       } else {
         alert(this.result.message);
       }

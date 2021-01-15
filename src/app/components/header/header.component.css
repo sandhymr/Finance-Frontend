@@ -8,3 +8,6 @@
 .navbar-light .navbar-brand {
   color: white;
 }
+.w3-bar-item {
+  text-decoration: none;
+}

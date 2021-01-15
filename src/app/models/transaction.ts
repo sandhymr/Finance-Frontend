@@ -14,4 +14,6 @@ export class Transaction {
   transactionId: number;
   status: string;
   message: string;
+
+  productImageUrl: string;
 }
