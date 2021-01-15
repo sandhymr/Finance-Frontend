@@ -20,6 +20,7 @@ export class EmiAndBuyComponent implements OnInit {
   product: Product = new Product();
   user: User;
   flag: boolean = false;
+  flag1:boolean=false;
   result: Transaction;
   faq: FrequentlyAskedQuestions[];
   constructor(
@@ -119,8 +120,10 @@ export class EmiAndBuyComponent implements OnInit {
       .subscribe((data) => {
         if (data != null) {
           this.faq = data;
+          this.flag1=true;
         } else {
           alert("no records found");
+          this.flag1=false;
         }
       });
   }

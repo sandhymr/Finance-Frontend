@@ -7,36 +7,36 @@
       title="Toggle Navigation Menu"
       ><i class="fa fa-bars"></i
     ></a>
-    <a [routerLink]="['/home']" class="w3-bar-item w3-button w3-padding-large"
+    <a [routerLink]="['/home']" style="text-decoration:none" class="w3-bar-item w3-button w3-padding-large"
       >Home</a
     >
     <a
       *ngIf="!flag"
       [routerLink]="['/login']"
-      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="text-decoration:none"
       >Login</a
     >
     <a
       *ngIf="flag"
       [routerLink]="['/dashboard']"
-      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="text-decoration:none"
       >Dashboard</a
     >
     <a
       *ngIf="!flag"
       [routerLink]="['/register']"
-      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="text-decoration:none"
       >Register</a
     >
 
     <a
       [routerLink]="['/products']"
-      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="text-decoration:none"
       >Products</a
     >
     <a
       href="#aboutus"
-      class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+      class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="text-decoration:none"
       >About us</a
     >
 

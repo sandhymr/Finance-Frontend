@@ -53,5 +53,61 @@
         </table>
       </div>
     </div>
+    <!-- <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+    </div> -->
+    <br />
+    <section
+      class="accordion-section clearfix mt-3"
+      aria-label="Question Accordions"
+      style="padding-top: 5rem"
+    >
+      <div class="container">
+        <h3>Frequently Asked Questions</h3>
+        <div
+          class="panel-group"
+          id="accordion"
+          role="tablist"
+          aria-multiselectable="true"
+        >
+          <div class="panel panel-default" *ngFor="let f of faq">
+            <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
+              <h3 class="panel-title">
+                <a
+                  class="collapsed"
+                  role="button"
+                  title=""
+                  data-toggle="collapse"
+                  data-parent="#accordion"
+                  href="#collapse1"
+                  aria-expanded="true"
+                  aria-controls="collapse1"
+                >
+                  {{ f.questions }}
+                </a>
+              </h3>
+            </div>
+            <div
+              id="collapse1"
+              class="panel-collapse collapse"
+              role="tabpanel"
+              aria-labelledby="heading1"
+            >
+              <div class="panel-body px-3 mb-4">
+                <p>{{ f.answer }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br />
   </div>
 </div>
