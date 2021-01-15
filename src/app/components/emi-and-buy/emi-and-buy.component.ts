@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FrequentlyAskedQuestions } from "src/app/models/faq";
 import { EmiSchemadetails, Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { User } from "src/app/models/user";
@@ -20,6 +21,7 @@ export class EmiAndBuyComponent implements OnInit {
   user: User;
   flag: boolean = false;
   result: Transaction;
+  faq: FrequentlyAskedQuestions[];
   constructor(
     private productService: ProductService,
     private userService: UserService,
@@ -31,6 +33,7 @@ export class EmiAndBuyComponent implements OnInit {
     // this.getUserDetails();
     this.flag = sessionStorage.getItem("cardType") === "Gold" ? true : false;
     this.getProductDetails();
+    this.getFaqDetails();
   }
 
   getProductDetails() {
@@ -108,5 +111,17 @@ export class EmiAndBuyComponent implements OnInit {
       ];
     }
     product.emiSchemadetails = emiSchemadetails;
+  }
+
+  getFaqDetails() {
+    this.productService
+      .viewFrequentlyAskedQuestionsByProductId(this.productId)
+      .subscribe((data) => {
+        if (data != null) {
+          this.faq = data;
+        } else {
+          alert("no records found");
+        }
+      });
   }
 }
