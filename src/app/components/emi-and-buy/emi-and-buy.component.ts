@@ -16,7 +16,7 @@ export class EmiAndBuyComponent implements OnInit {
   transaction: Transaction = new Transaction();
   productId: number = parseInt(sessionStorage.getItem("productId"));
   userId: number = parseInt(sessionStorage.getItem("userId"));
-  product: Product;
+  product: Product = new Product();
   user: User;
   flag: boolean = false;
   result: Transaction;
@@ -28,7 +28,8 @@ export class EmiAndBuyComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUserDetails();
+    // this.getUserDetails();
+    this.flag = sessionStorage.getItem("cardType") === "Gold" ? true : false;
     this.getProductDetails();
   }
 
@@ -46,21 +47,21 @@ export class EmiAndBuyComponent implements OnInit {
       });
   }
 
-  getUserDetails() {
-    this.userService.findUserById(this.userId).subscribe((data) => {
-      if (data != null) {
-        this.user = data;
-        console.log(this.user.cardType);
-        if (this.user.cardType == "Gold") {
-          this.flag = true;
-        } else {
-          this.flag = false;
-        }
-      } else {
-        alert("invalid user");
-      }
-    });
-  }
+  // getUserDetails() {
+  //   this.userService.findUserById(this.userId).subscribe((data) => {
+  //     if (data != null) {
+  //       this.user = data;
+  //       console.log(this.user.cardType);
+  //       if (this.user.cardType == "Gold") {
+  //         this.flag = true;
+  //       } else {
+  //         this.flag = false;
+  //       }
+  //     } else {
+  //       alert("invalid user");
+  //     }
+  //   });
+  // }
 
   pay() {
     this.transaction.userId = this.userId;
