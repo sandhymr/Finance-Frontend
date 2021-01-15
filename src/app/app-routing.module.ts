@@ -12,6 +12,8 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { RegisterComponent } from "./components/register/register.component";
 import { InvoiceComponent } from "./components/invoice/invoice.component";
 import { AddFAQComponent } from "./components/add-faq/add-faq.component";
+import { TransactioncompComponent } from "./components/transactioncomp/transactioncomp.component";
+import { ProductpurchasedComponent } from "./components/productpurchased/productpurchased.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: "buyProduct", component: EmiAndBuyComponent },
   { path: "invoice", component: InvoiceComponent },
   { path: "addFaq", component: AddFAQComponent },
+  { path: "viewAllTransactions", component: TransactioncompComponent },
+  { path: "productsPurchased", component: ProductpurchasedComponent },
 ];
 
 @NgModule({
