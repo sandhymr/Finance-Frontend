@@ -1,0 +1,9 @@
+td{
+    font-size: medium;
+}
+th{
+    font-size: medium;
+}
+table,th,td{
+    border: 1px solid black;
+}

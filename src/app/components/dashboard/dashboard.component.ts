@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Product } from "src/app/models/product";
+import { Transaction } from "src/app/models/transaction";
+import { ProductService } from "src/app/services/product.service";
+import { TransactionService } from "src/app/services/transaction.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -10,15 +14,20 @@ export class DashboardComponent implements OnInit {
   flag:boolean=false;
   cardchecker:string=sessionStorage.getItem("cardType");
   userName = sessionStorage.getItem("userName");
-  constructor(private userService:UserService) {}
+  constructor(private userService:UserService, private transactionService:TransactionService, private productService:ProductService) {}
   cardTypebool:boolean=true;
   userId:number=parseInt(sessionStorage.getItem("userId"));
   ngOnInit() {
     this.checkCard();
+    this.viewProductsByUserId();
+    this.viewTransactions();
   }
   totalCredit:number;
+  creditRemaining:number;
   result:any;
   validityTill:string;
+  result01: Transaction[];
+  prod: Transaction[];
   checkCard() {
     if (this.cardchecker == "Gold") {
       this.cardTypebool = true;
@@ -38,6 +47,58 @@ export class DashboardComponent implements OnInit {
           this.totalCredit=this.result.totalCredit;
           this.flag=this.result.user.cardStatus;
           this.validityTill=this.result.validity.toString();
+          this.creditRemaining=this.result.creditRemaining;
+        }
+      }
+    );
+  }
+  tran01:Transaction=null;
+  tran02:Transaction=null;
+  tran03:Transaction=null;
+  
+  public viewTransactions(){
+    this.transactionService.viewTransactionsForUserId(this.userId).subscribe(
+      data =>{
+        if(data==null){
+          console.log("No transactions yet");
+        }else{
+          this.result01=data;
+          console.log(JSON.stringify(data));
+          this.result01=data;
+
+          if(data[0]!=null){
+            this.tran01=data.pop();
+          }
+          if(data[1]!=null){
+            this.tran02=data.pop();
+          }
+          if(data[2]!=null){
+            this.tran03=data.pop();
+          }
+        }
+      }
+    );
+    
+  }
+  pran01:Transaction=null;
+  pran02:Transaction=null;
+  pran03:Transaction=null;
+  public viewProductsByUserId(){
+    this.productService.findProductPurchasedWithUserId(this.userId).subscribe(
+      data =>{
+        if(data==null){
+          console.log("No products purchased yet");
+        }else{
+          this.prod=data;
+          if(data[0]!=null){
+            this.pran01=data.pop();
+          }
+          if(data[1]!=null){
+            this.pran02=data.pop();
+          }
+          if(data[2]!=null){
+            this.pran03=data.pop();
+          }
         }
       }
     );
