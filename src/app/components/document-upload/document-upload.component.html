@@ -1,0 +1,63 @@
+<!-- <form (ngSubmit)="uploadDoc()">
+  Select your Pan Card<input
+    type="file"
+    name="pancCard"
+    (change)="onPanFileChange($event)"
+  />
+<br>
+  Select your Aadhar Card<input
+    type="file"
+    name="aadharCard"
+    (change)="onAadharFileChange($event)"
+  />
+  <br>
+  <button type="submit">Upload</button>
+</form> -->
+
+
+<div class="w3-content"
+    style="
+    max-width: 2000px;
+    background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/07/credit-cards-4-steps-1920x1152.jpg');"
+>
+<form (ngSubmit)="uploadDoc()">
+    <section>
+        <div class="container p-5">
+ 
+            <div class="row" >
+                <div class="col-lg-5 mx-auto" >
+                    <div class="p-5 bg-white shadow rounded-lg">
+                        <div>
+                            <h4 class="text-left text-muted" style="color: black;">Upload Document here</h4>
+ 
+                        </div>
+                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt=""
+                            width="200" class="d-block mx-auto mb-4 rounded-pill">
+ 
+                        <h6 class="text-left  text-muted">
+                            Upload Pan Card
+                        </h6>
+ 
+                        <div class="custom-file rounded-pill mb-5">
+                            <input type="file" accept="image/*" name="panCard" (change)="onPanFileChange($event)" />
+                        </div>
+ 
+                        <h6 class="text-left text-muted">
+                            Upload Aadhar Card
+                        </h6>
+ 
+                        <div class="custom-file rounded-pill mb-5">
+                            <input type="file" accept="image/*" name="aadharCard" (change)="onAadharFileChange($event)" />
+                        </div>
+ 
+                        <p style="text-align: right; ">
+                            <input type="submit" value="Upload Files" class="btn btn-dark btn-block" />
+                        </p> 
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </form>
+</div>
