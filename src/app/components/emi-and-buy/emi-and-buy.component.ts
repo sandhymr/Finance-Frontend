@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FrequentlyAskedQuestions } from "src/app/models/faq";
 import { EmiSchemadetails, Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { User } from "src/app/models/user";
@@ -16,10 +17,12 @@ export class EmiAndBuyComponent implements OnInit {
   transaction: Transaction = new Transaction();
   productId: number = parseInt(sessionStorage.getItem("productId"));
   userId: number = parseInt(sessionStorage.getItem("userId"));
-  product: Product;
+  product: Product = new Product();
   user: User;
   flag: boolean = false;
+  flag1:boolean=false;
   result: Transaction;
+  faq: FrequentlyAskedQuestions[];
   constructor(
     private productService: ProductService,
     private userService: UserService,
@@ -28,8 +31,10 @@ export class EmiAndBuyComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUserDetails();
+    // this.getUserDetails();
+    this.flag = sessionStorage.getItem("cardType") === "Gold" ? true : false;
     this.getProductDetails();
+    this.getFaqDetails();
   }
 
   getProductDetails() {
@@ -46,21 +51,21 @@ export class EmiAndBuyComponent implements OnInit {
       });
   }
 
-  getUserDetails() {
-    this.userService.findUserById(this.userId).subscribe((data) => {
-      if (data != null) {
-        this.user = data;
-        console.log(this.user.cardType);
-        if (this.user.cardType == "Gold") {
-          this.flag = true;
-        } else {
-          this.flag = false;
-        }
-      } else {
-        alert("invalid user");
-      }
-    });
-  }
+  // getUserDetails() {
+  //   this.userService.findUserById(this.userId).subscribe((data) => {
+  //     if (data != null) {
+  //       this.user = data;
+  //       console.log(this.user.cardType);
+  //       if (this.user.cardType == "Gold") {
+  //         this.flag = true;
+  //       } else {
+  //         this.flag = false;
+  //       }
+  //     } else {
+  //       alert("invalid user");
+  //     }
+  //   });
+  // }
 
   pay() {
     this.transaction.userId = this.userId;
@@ -107,5 +112,19 @@ export class EmiAndBuyComponent implements OnInit {
       ];
     }
     product.emiSchemadetails = emiSchemadetails;
+  }
+
+  getFaqDetails() {
+    this.productService
+      .viewFrequentlyAskedQuestionsByProductId(this.productId)
+      .subscribe((data) => {
+        if (data != null) {
+          this.faq = data;
+          this.flag1=true;
+        } else {
+          alert("no records found");
+          this.flag1=false;
+        }
+      });
   }
 }

@@ -30,7 +30,7 @@ export class AdminService {
   }
 
     public addFaq(faq: FrequentlyAskedQuestions): Observable<FrequentlyAskedQuestions> {
-    return this.http.post<FrequentlyAskedQuestions>("http://localhost:8181/addFaq", faq);
+    return this.http.post<FrequentlyAskedQuestions>("http://localhost:8181/addFaqByProductId", faq);
   }
 
   public generateCard(userId: number): Observable<any> {
