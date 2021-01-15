@@ -129,4 +129,6 @@ export class AdminDashboardComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(["login"]);
   }
+
+  View(userId: number) {}
 }
