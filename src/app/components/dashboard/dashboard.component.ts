@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   flag: boolean = false;
   cardchecker: string = sessionStorage.getItem("cardType");
   userName = sessionStorage.getItem("userName");
+  noTransaction = false;
+  notPurchased = false;
   constructor(
     private userService: UserService,
     private transactionService: TransactionService,
@@ -64,9 +66,11 @@ export class DashboardComponent implements OnInit {
     this.transactionService
       .viewTransactionsForUserId(this.userId)
       .subscribe((data) => {
-        if (data == null) {
+        if (data.length == 0) {
           console.log("No transactions yet");
+          this.noTransaction = true;
         } else {
+          this.noTransaction = false;
           this.result01 = data;
           console.log(JSON.stringify(data));
           this.result01 = data;
@@ -90,9 +94,11 @@ export class DashboardComponent implements OnInit {
     this.productService
       .findProductPurchasedWithUserId(this.userId)
       .subscribe((data) => {
-        if (data == null) {
+        if (data.length == 0) {
           console.log("No products purchased yet");
+          this.notPurchased = true;
         } else {
+          this.notPurchased = false;
           this.prod = data;
           if (data[0] != null) {
             this.pran01 = data.pop();

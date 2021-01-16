@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.result = data;
       if (this.result.status == "SUCCESS") {
         // alert(this.result.message);
-        this.snackbar.success(this.result.message);
+        // this.snackbar.success(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
         sessionStorage.setItem("userLoggedIn", "true");
@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["dashboard"]);
         }
       } else if (this.result.status == "ADMIN") {
-        alert(this.result.message);
+        // alert(this.result.message);
+        // this.snackbar.success(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
         sessionStorage.setItem("adminLoggedIn", "true");

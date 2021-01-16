@@ -354,7 +354,13 @@
                   <div style="color: red">Both passwords dont match</div>
                 </div>
 
-                <input type="submit" class="btnRegister" value="Register" />
+                <button
+                  type="submit"
+                  class="btn btn-primary btnRegister"
+                  [disabled]="registerForm.invalid"
+                >
+                  Register
+                </button>
               </div>
             </div>
           </div>

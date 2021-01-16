@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: "adminDashboard",
     component: AdminDashboardComponent,
-    canActivate: [AdminAuthGuard, AuthGuard],
+    canActivate: [AdminAuthGuard],
   },
   {
     path: "buyProduct",
@@ -47,13 +47,13 @@ const routes: Routes = [
   {
     path: "addFaq",
     component: AddFAQComponent,
-    canActivate: [AdminAuthGuard, AuthGuard],
+    canActivate: [AdminAuthGuard],
   },
   { path: "docUpload", component: DocumentUploadComponent },
   {
     path: "download",
     component: DownloadComponent,
-    canActivate: [AuthGuard, AdminAuthGuard],
+    canActivate: [AdminAuthGuard],
   },
   {
     path: "viewAllTransactions",

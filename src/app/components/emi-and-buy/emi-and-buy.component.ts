@@ -5,6 +5,7 @@ import { EmiSchemadetails, Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { User } from "src/app/models/user";
 import { ProductService } from "src/app/services/product.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { TransactionService } from "src/app/services/transaction.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -28,7 +29,8 @@ export class EmiAndBuyComponent implements OnInit {
     private productService: ProductService,
     private userService: UserService,
     private transactionService: TransactionService,
-    private router: Router
+    private router: Router,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -80,13 +82,15 @@ export class EmiAndBuyComponent implements OnInit {
         this.result = data;
         if (this.result.status == "SUCCESS") {
           this.isLoading = false;
-          alert(this.result.message);
+          // alert(this.result.message);
+          this.snackbar.success(this.result.message);
           this.router.navigate(["invoice"], {
             queryParams: { transaction: JSON.stringify(this.result) },
           });
         } else {
           this.isLoading = false;
-          alert(this.result.message);
+          // alert(this.result.message);
+          this.snackbar.failed(this.result.message);
         }
       },
       (err) => (this.isLoading = false)

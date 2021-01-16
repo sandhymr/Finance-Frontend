@@ -166,7 +166,7 @@
             <button
               class="w3-button w3-black w3-margin-bottom"
               [routerLink]="['/products']"
-              (click)="viewProductByType('Mobile')"
+              [queryParams]="{ filter: 'Mobile' }"
             >
               View
             </button>
@@ -189,7 +189,7 @@
             <button
               class="w3-button w3-black w3-margin-bottom"
               [routerLink]="['/products']"
-              (click)="viewProductByType('Laptop')"
+              [queryParams]="{ filter: 'Laptop' }"
             >
               View
             </button>
@@ -209,7 +209,7 @@
             <button
               class="w3-button w3-black w3-margin-bottom"
               [routerLink]="['/products']"
-              (click)="viewProductByType('Watch')"
+              [queryParams]="{ filter: 'Watch' }"
             >
               View
             </button>

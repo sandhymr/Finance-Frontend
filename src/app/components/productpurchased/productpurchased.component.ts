@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { ProductService } from "src/app/services/product.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { TransactionService } from "src/app/services/transaction.service";
 declare var $;
 @Component({
@@ -21,7 +22,8 @@ export class ProductpurchasedComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -50,12 +52,14 @@ export class ProductpurchasedComponent implements OnInit {
       } else {
         this.result = data;
         if (this.result.status == "SUCCESS") {
-          alert(this.result.message);
+          // alert(this.result.message);
+          this.snackbar.success(this.result.message);
           this.router.navigate(["invoice"], {
             queryParams: { transaction: JSON.stringify(this.result) },
           });
         } else {
-          alert(this.result.message);
+          // alert(this.result.message);
+          this.snackbar.failed(this.result.message);
         }
       }
       this.products[index].isLoading = false;

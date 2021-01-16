@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -14,7 +15,11 @@ export class DocumentUploadComponent implements OnInit {
   panCard: any;
   aadharCard: any;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private snackbar: SnackbarService
+  ) {}
 
   ngOnInit() {
     // this.userId = sessionStorage.getItem('userId');
@@ -35,13 +40,15 @@ export class DocumentUploadComponent implements OnInit {
     this.userService.docUpload(formData).subscribe((Response) => {
       // alert(JSON.stringify(Response));
       if (Response.status == "SUCCESS") {
-        alert(Response.message);
+        // alert(Response.message);
+        this.snackbar.success(Response.message);
         sessionStorage.setItem("docUpload", "1");
         if (this.userName == null) {
           this.router.navigate(["registrationFee"]);
         }
       } else {
-        alert(Response.message);
+        // alert(Response.message);
+        this.snackbar.failed(Response.message);
       }
     });
   }

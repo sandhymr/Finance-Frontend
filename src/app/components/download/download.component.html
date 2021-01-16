@@ -1,6 +1,14 @@
 <div *ngIf="user">
-  Aadhar Card :
-  <img src="http://localhost:8181/aadharCard/{{ user.aadharCard }}" />
+  <div class="border border-secondary">
+    <h2>Aadhar Card</h2>
+    <br />
+    <img src="http://localhost:8181/aadharCard/{{ user.aadharCard }}" />
+  </div>
   <br />
-  Pan Card : <img src="http://localhost:8181/panCard/{{ user.panCard }}" />
+  <hr />
+  <div>
+    <h2>Pan Card</h2>
+    <br />
+    <img src="http://localhost:8181/panCard/{{ user.panCard }}" />
+  </div>
 </div>
