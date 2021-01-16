@@ -34,6 +34,10 @@ export class PayJoiningFeeComponent implements OnInit {
       if (this.result.status == "SUCCESS") {
         alert(this.result.message);
         if (this.userName != null) {
+          sessionStorage.setItem(
+            "registrationFee",
+            this.result.registrationFee
+          );
           this.router.navigate(["dashboard"]);
         } else {
           this.router.navigate(["login"]);

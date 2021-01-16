@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("cardType", this.result.cardType);
-        this.router.navigate(["registrationFee"]);
+        this.router.navigate(["docUpload"]);
       } else {
         alert(this.result.message);
       }

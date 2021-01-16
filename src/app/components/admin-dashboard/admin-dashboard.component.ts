@@ -66,7 +66,6 @@ export class AdminDashboardComponent implements OnInit {
     this.adminService.viewAllCardHolders().subscribe((data) => {
       if (data != null) {
         this.flag = true;
-
         this.users = data;
       } else {
         this.flag = false;
@@ -129,6 +128,4 @@ export class AdminDashboardComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(["login"]);
   }
-
-  View(userId: number) {}
 }

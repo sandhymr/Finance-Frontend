@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
+        sessionStorage.setItem("userLoggedIn", "true");
         sessionStorage.setItem("cardType", this.result.cardType);
+        sessionStorage.setItem("docUpload", this.result.docUpload);
         sessionStorage.setItem("registrationFee", this.result.registrationFee);
         this.fee = parseInt(sessionStorage.getItem("registrationFee"));
         if (this.fee == 0) {
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
         alert(this.result.message);
         sessionStorage.setItem("userId", this.result.userId);
         sessionStorage.setItem("userName", this.result.userName);
+        sessionStorage.setItem("adminLoggedIn", "true");
         sessionStorage.setItem("admin", "Admin");
         this.router.navigate(["adminDashboard"]);
       } else {

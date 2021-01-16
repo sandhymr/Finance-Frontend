@@ -18,4 +18,5 @@ export class User {
 
   cardStatus: number;
   registrationFee: number;
+  docUpload: number;
 }

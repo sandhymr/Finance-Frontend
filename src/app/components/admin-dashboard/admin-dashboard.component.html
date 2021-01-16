@@ -203,10 +203,13 @@
             >Generate Card</a
           >
         </button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">
+        <button type="button" class="btn btn-primary">
           <a
+            [routerLink]="['/download']"
+            [queryParams]="{ userId: user.userId }"
+            routerLinkActive="router-link-active"
             style="text-decoration: none; color: white"
-            (click)="View(user.userId)"
+            target="_blank"
             >View Documents</a
           >
         </button>
