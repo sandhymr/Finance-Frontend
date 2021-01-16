@@ -16,7 +16,18 @@
           <p class="card-text">{{ product.productName }}</p>
         </div>
       </div>
-      <button class="btn btn-primary" (click)="pay()">Pay now</button>
+      <button
+        *ngIf="!isLoading; else showLoader"
+        class="btn btn-primary"
+        (click)="pay()"
+      >
+        Pay now
+      </button>
+      <ng-template #showLoader
+        ><button class="btn btn-primary" disabled>
+          Processing...
+        </button></ng-template
+      >
     </div>
     <div class="col-md-6 thumbnail">
       <label><b>Product name :</b></label>

@@ -15,4 +15,5 @@ export class Transaction {
   status: string;
   message: string;
   productUrl: string;
+  isLoading? = false;
 }

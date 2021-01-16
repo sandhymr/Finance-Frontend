@@ -20,8 +20,9 @@ export class EmiAndBuyComponent implements OnInit {
   product: Product = new Product();
   user: User;
   flag: boolean = false;
-  flag1:boolean=false;
+  flag1: boolean = false;
   result: Transaction;
+  isLoading = false;
   faq: FrequentlyAskedQuestions[];
   constructor(
     private productService: ProductService,
@@ -68,22 +69,28 @@ export class EmiAndBuyComponent implements OnInit {
   // }
 
   pay() {
+    this.isLoading = true;
     this.transaction.userId = this.userId;
     this.transaction.productId = this.productId;
     console.log(this.transaction.userId);
     console.log(this.transaction.productId);
     console.log(this.transaction.emiScheme);
-    this.transactionService.buyProduct(this.transaction).subscribe((data) => {
-      this.result = data;
-      if (this.result.status == "SUCCESS") {
-        alert(this.result.message);
-        this.router.navigate(["invoice"], {
-          queryParams: { transaction: JSON.stringify(this.result) },
-        });
-      } else {
-        alert(this.result.message);
-      }
-    });
+    this.transactionService.buyProduct(this.transaction).subscribe(
+      (data) => {
+        this.result = data;
+        if (this.result.status == "SUCCESS") {
+          this.isLoading = false;
+          alert(this.result.message);
+          this.router.navigate(["invoice"], {
+            queryParams: { transaction: JSON.stringify(this.result) },
+          });
+        } else {
+          this.isLoading = false;
+          alert(this.result.message);
+        }
+      },
+      (err) => (this.isLoading = false)
+    );
   }
 
   emiCalculation(product: Product) {
@@ -120,10 +127,10 @@ export class EmiAndBuyComponent implements OnInit {
       .subscribe((data) => {
         if (data != null) {
           this.faq = data;
-          this.flag1=true;
+          this.flag1 = true;
         } else {
           alert("no records found");
-          this.flag1=false;
+          this.flag1 = false;
         }
       });
   }
