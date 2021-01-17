@@ -1,8 +1,7 @@
 <app-header *ngIf="showHeader"></app-header>
-<br />
 
 <!-- <p>{{ product.productName }}</p> -->
-<div class="main">
+<div class="main" style="margin-top: -30px;">
   <div class="form-group has-search">
     <span class="fa fa-search form-control-feedback"></span>
     <input
@@ -74,8 +73,8 @@
         ></app-product-details>
       </div>
       <div class="modal-footer" *ngIf="showHeader">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">
-          <a style="text-decoration: none; color: white" (click)="buy(product)"
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          <a style="text-decoration: none; color: white;" (click)="buy(product)"
             >Buy</a
           >
         </button>
