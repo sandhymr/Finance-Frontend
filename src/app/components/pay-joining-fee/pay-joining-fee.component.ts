@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -15,7 +16,11 @@ export class PayJoiningFeeComponent implements OnInit {
   result: any;
   flag: boolean = false;
   // cardType: CardType;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private snackbar: SnackbarService
+  ) {}
 
   ngOnInit() {
     this.checkCard();
@@ -32,14 +37,20 @@ export class PayJoiningFeeComponent implements OnInit {
     this.userService.payJoiningFee(this.userId).subscribe((data) => {
       this.result = data;
       if (this.result.status == "SUCCESS") {
-        alert(this.result.message);
+        // alert(this.result.message);
+        this.snackbar.success(this.result.message);
         if (this.userName != null) {
+          sessionStorage.setItem(
+            "registrationFee",
+            this.result.registrationFee
+          );
           this.router.navigate(["dashboard"]);
         } else {
           this.router.navigate(["login"]);
         }
       } else {
-        alert(this.result.message);
+        // alert(this.result.message);
+        this.snackbar.failed(this.result.message);
       }
     });
   }

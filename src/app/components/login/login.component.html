@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5" style="margin-top: 60px; ">
+        <div class="col-lg-5" style="margin-top: 60px">
           <form #loginForm="ngForm" (ngSubmit)="login()">
             <div class="card2 card border-3 px-4 py-5">
               <div class="row px-3">
@@ -31,6 +31,7 @@
                   name="email"
                   placeholder="Enter a valid email address"
                   [(ngModel)]="log.emailId"
+                  required
                 />
               </div>
               <div class="row px-3">
@@ -42,20 +43,25 @@
                   name="password"
                   placeholder="Enter password"
                   [(ngModel)]="log.password"
+                  required
                 />
               </div>
               <div class="row px-3 mb-4">
-                <a [routerLink]="['/forgotPwd']" class="ml-auto mb-0 text-sm" 
+                <a [routerLink]="['/forgotPwd']" class="ml-auto mb-0 text-sm"
                   >Forgot Password?</a
                 >
               </div>
               <div class="row mb-3 px-3">
-                <button type="submit" class="btn btn-blue text-center">
+                <button
+                  type="submit"
+                  class="btn btn-blue text-center"
+                  [disabled]="loginForm.invalid"
+                >
                   Login
                 </button>
               </div>
               <div class="row mb-4 px-3">
-                <small class="font-weight-bold" style="font-size:small;"
+                <small class="font-weight-bold" style="font-size: small"
                   >Don't have an account?
                   <a class="text-danger" [routerLink]="['/register']"
                     >Register</a

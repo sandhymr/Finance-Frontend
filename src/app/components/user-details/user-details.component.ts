@@ -9,6 +9,7 @@ import { User } from "src/app/models/user";
 export class UserDetailsComponent implements OnInit {
   @Input()
   user: User;
+  status: string;
   constructor() {}
 
   ngOnInit() {}

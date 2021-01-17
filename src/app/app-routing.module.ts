@@ -12,29 +12,59 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { RegisterComponent } from "./components/register/register.component";
 import { InvoiceComponent } from "./components/invoice/invoice.component";
 import { AddFAQComponent } from "./components/add-faq/add-faq.component";
-import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
-import { DownloadComponent } from './components/download/download.component';
+import { DocumentUploadComponent } from "./components/document-upload/document-upload.component";
+import { DownloadComponent } from "./components/download/download.component";
 import { TransactioncompComponent } from "./components/transactioncomp/transactioncomp.component";
 import { ProductpurchasedComponent } from "./components/productpurchased/productpurchased.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { AdminAuthGuard } from "./guards/admin-auth.guard";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "products", component: ProductListComponent },
-  { path: "dashboard", component: DashboardComponent },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
   { path: "forgotPwd", component: ForgotPasswordComponent },
   { path: "home", component: HomeComponent },
   { path: "changePassword", component: ChangePasswordComponent },
   { path: "registrationFee", component: PayJoiningFeeComponent },
-  { path: "adminDashboard", component: AdminDashboardComponent },
-  { path: "buyProduct", component: EmiAndBuyComponent },
-  { path: "invoice", component: InvoiceComponent },
-  { path: "addFaq", component: AddFAQComponent },
+  {
+    path: "adminDashboard",
+    component: AdminDashboardComponent,
+    canActivate: [AdminAuthGuard],
+  },
+  {
+    path: "buyProduct",
+    component: EmiAndBuyComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "invoice", component: InvoiceComponent, canActivate: [AuthGuard] },
+  {
+    path: "addFaq",
+    component: AddFAQComponent,
+    canActivate: [AdminAuthGuard],
+  },
   { path: "docUpload", component: DocumentUploadComponent },
-  { path: "download", component: DownloadComponent },
-  { path: "viewAllTransactions", component: TransactioncompComponent },
-  { path: "productsPurchased", component: ProductpurchasedComponent },
+  {
+    path: "download",
+    component: DownloadComponent,
+    canActivate: [AdminAuthGuard],
+  },
+  {
+    path: "viewAllTransactions",
+    component: TransactioncompComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "productsPurchased",
+    component: ProductpurchasedComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

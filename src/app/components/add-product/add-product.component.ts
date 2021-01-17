@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Product } from "src/app/models/product";
 import { AdminService } from "src/app/services/admin.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 
 @Component({
   selector: "app-add-product",
@@ -10,7 +12,10 @@ import { AdminService } from "src/app/services/admin.service";
 export class AddProductComponent implements OnInit {
   product: Product = new Product();
   result: any;
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private snackbar: SnackbarService
+  ) {}
 
   ngOnInit() {}
 
@@ -18,9 +23,12 @@ export class AddProductComponent implements OnInit {
     this.adminService.addProduct(this.product).subscribe((data) => {
       this.result = data;
       if (this.result.productId != null) {
-        alert("The Product is Added Successfully!!");
+        // alert("The Product is Added Successfully!!");
+        this.snackbar.success("The Product is Added Successfully!!");
+        window.location.reload();
       } else {
-        alert("Product is not Added");
+        // alert("Product is not Added");
+        this.snackbar.success("Product is not added!!");
       }
     });
   }

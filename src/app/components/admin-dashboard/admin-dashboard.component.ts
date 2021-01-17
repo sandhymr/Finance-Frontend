@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "src/app/models/user";
 import { AdminService } from "src/app/services/admin.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 declare var $;
 
 @Component({
@@ -20,7 +21,11 @@ export class AdminDashboardComponent implements OnInit {
   addproduct: boolean = false; //getaddproduct
   allproduct: boolean = false; //viewallproducts
   addFAQ: boolean = false; //addFaq
-  constructor(private adminService: AdminService, private router: Router) {}
+  constructor(
+    private adminService: AdminService,
+    private router: Router,
+    private snackbar: SnackbarService
+  ) {}
 
   ngOnInit() {}
 
@@ -30,13 +35,14 @@ export class AdminDashboardComponent implements OnInit {
     this.addproduct = false;
     this.addFAQ = false;
     this.adminService.viewAllNotCardHolders().subscribe((data) => {
-      if (data != null) {
+      if (data.length != 0) {
         this.flag = true;
         this.users = data;
         this.show = true;
       } else {
         this.flag = false;
-        alert("No records found");
+        // alert("No records found");
+        this.snackbar.failed("No records found");
       }
     });
   }
@@ -50,9 +56,11 @@ export class AdminDashboardComponent implements OnInit {
     this.adminService.generateCard(userId).subscribe((data) => {
       this.result = data;
       if (this.result.status == "SUCCESS") {
-        alert(this.result.message);
+        // alert(this.result.message);
+        this.snackbar.success(this.result.message);
       } else {
-        alert(this.result.message);
+        // alert(this.result.message);.
+        this.snackbar.failed(this.result.message);
       }
     });
   }
@@ -64,12 +72,12 @@ export class AdminDashboardComponent implements OnInit {
     this.addFAQ = false;
     this.show = false;
     this.adminService.viewAllCardHolders().subscribe((data) => {
-      if (data != null) {
+      if (data.length != 0) {
         this.flag = true;
-
         this.users = data;
       } else {
         this.flag = false;
+        this.snackbar.failed("No records found");
       }
     });
   }
@@ -90,11 +98,12 @@ export class AdminDashboardComponent implements OnInit {
     this.adminService
       .viewCardHoldersByType(this.user.cardType)
       .subscribe((data) => {
-        if (data != null) {
+        if (data.length != 0) {
           this.flag = true;
           this.users = data;
         } else {
           this.flag = false;
+          this.snackbar.failed("No records found");
         }
       });
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ForgotPwd } from "src/app/models/Forgotpwd";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -13,7 +14,11 @@ export class ForgotPasswordComponent implements OnInit {
   result: any;
   flag: boolean = false;
   otp: number;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private snackbar: SnackbarService
+  ) {}
 
   ngOnInit() {}
 
@@ -23,10 +28,12 @@ export class ForgotPasswordComponent implements OnInit {
       if (this.result.status == "SUCCESS") {
         this.flag = true;
         sessionStorage.setItem("userId", this.result.userId);
-        alert(this.result.message);
-        console.log(this.result.otp);
+        // alert(this.result.message);
+        this.snackbar.success(this.result.message);
+        // console.log(this.result.otp);
       } else {
-        alert(this.result.message);
+        // alert(this.result.message);
+        this.snackbar.failed(this.result.message);
       }
     });
   }
@@ -35,7 +42,8 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.otp == this.result.otp) {
       this.router.navigate(["changePassword"]);
     } else {
-      alert("Invalid otp");
+      // alert("Invalid otp");
+      this.snackbar.failed("Invalid OTP");
     }
   }
 }
