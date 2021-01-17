@@ -6,12 +6,28 @@
   <div class="row">
     <div class="col-md-6">
       <div class="card" style="width: 36em; height: 32em">
-        <img [src]="product.productImageUrl" alt="watch" width="100px" height="200px" />
+        <img
+          [src]="product.productImageUrl"
+          alt="watch"
+          width="100px"
+          height="200px"
+        />
         <div class="card-body">
           <p class="card-text">{{ product.productName }}</p>
         </div>
       </div>
-      <button class="btn btn-primary" (click)="pay()">Pay now</button>
+      <button
+        *ngIf="!isLoading; else showLoader"
+        class="btn btn-primary"
+        (click)="pay()"
+      >
+        Pay now
+      </button>
+      <ng-template #showLoader
+        ><button class="btn btn-primary" disabled>
+          Processing...
+        </button></ng-template
+      >
     </div>
     <div class="col-md-6 thumbnail">
       <label><b>Product name :</b></label>
@@ -34,7 +50,12 @@
           </tr>
           <tr *ngFor="let data of product.emiSchemadetails; let i = index">
             <td>
-              <input type="radio" name="emiScheme" [value]="data.noOfMonth" [(ngModel)]="transaction.emiScheme" />
+              <input
+                type="radio"
+                name="emiScheme"
+                [value]="data.noOfMonth"
+                [(ngModel)]="transaction.emiScheme"
+              />
             </td>
             <td>{{ data.emiScheme }}</td>
             <td>&#8377; {{ data.amountPerMonth }}</td>
@@ -53,33 +74,51 @@
         </p>
       </div>
     </div> -->
-    <br>
-    <section class="accordion-section clearfix mt-3" aria-label="Question Accordions" style="padding-top: 5rem;" >
+    <br />
+    <section
+      class="accordion-section clearfix mt-3"
+      aria-label="Question Accordions"
+      style="padding-top: 5rem"
+    >
       <div class="container">
-
-        <h3>Frequently Asked Questions </h3>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <h3>Frequently Asked Questions</h3>
+        <div
+          class="panel-group"
+          id="accordion"
+          role="tablist"
+          aria-multiselectable="true"
+        >
           <div class="panel panel-default" *ngFor="let f of faq">
             <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
               <h3 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
-                  href="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                  {{f.questions}}
+                <a
+                  class="collapsed"
+                  role="button"
+                  title=""
+                  data-toggle="collapse"
+                  data-parent="#accordion"
+                  href="#collapse1"
+                  aria-expanded="true"
+                  aria-controls="collapse1"
+                >
+                  {{ f.questions }}
                 </a>
               </h3>
             </div>
-            <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div
+              id="collapse1"
+              class="panel-collapse collapse"
+              role="tabpanel"
+              aria-labelledby="heading1"
+            >
               <div class="panel-body px-3 mb-4">
-                <p>{{f.answer}}</p>
+                <p>{{ f.answer }}</p>
               </div>
             </div>
           </div>
-
-          
         </div>
-
       </div>
     </section>
-    <br>
+    <br />
   </div>
 </div>

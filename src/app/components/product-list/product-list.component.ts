@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Product } from "src/app/models/product";
 import { ProductService } from "src/app/services/product.service";
 declare var $;
@@ -13,8 +13,13 @@ export class ProductListComponent implements OnInit {
   showProducts: boolean = false;
   showHeader: boolean = true;
   product: Product = new Product();
-
-  constructor(private productService: ProductService, private router: Router) {}
+  localProducts: Product[];
+  searchText: string = "";
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.viewAllProducts();
@@ -25,6 +30,8 @@ export class ProductListComponent implements OnInit {
       if (data != null) {
         this.showProducts = true;
         this.products = data;
+        this.localProducts = data;
+        this.getFilteredProducts();
       } else {
         this.showProducts = false;
       }
@@ -48,5 +55,21 @@ export class ProductListComponent implements OnInit {
     } else {
       this.router.navigate(["login"]);
     }
+  }
+
+  getFilteredProducts() {
+    this.route.queryParams.subscribe((params) => {
+      if (params && params.filter) {
+        this.products = this.localProducts.filter(
+          (product) => product.productType === params.filter.toLowerCase()
+        );
+      }
+    });
+  }
+
+  search(filter: string) {
+    this.products = this.localProducts.filter((product) =>
+      product.productType.toLowerCase().includes(filter.toLowerCase())
+    );
   }
 }

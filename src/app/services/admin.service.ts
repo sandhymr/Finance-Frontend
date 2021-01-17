@@ -30,8 +30,13 @@ export class AdminService {
     return this.http.post<Product>("http://localhost:8181/addProduct", product);
   }
 
-    public addFaq(faq: FrequentlyAskedQuestions): Observable<FrequentlyAskedQuestions> {
-    return this.http.post<FrequentlyAskedQuestions>("http://localhost:8181/addFaqByProductId", faq);
+  public addFaq(
+    faq: FrequentlyAskedQuestions
+  ): Observable<FrequentlyAskedQuestions> {
+    return this.http.post<FrequentlyAskedQuestions>(
+      "http://localhost:8181/addFaqByProductId",
+      faq
+    );
   }
 
   public generateCard(userId: number): Observable<any> {
@@ -41,11 +46,10 @@ export class AdminService {
   }
 
   public download(doc: Document): Observable<Document> {
-   return this.http.post<Document>("http://localhost:8181/download", doc);
+    return this.http.post<Document>("http://localhost:8181/download", doc);
   }
-  fetchProfile(id: number) : Observable<User> {
-    let url = "http://localhost:8181/viewDoc?userId="+id;
-   return this.http.get<User>(url); 
+  fetchProfile(id: number): Observable<User> {
+    let url = "http://localhost:8181/viewDoc?userId=" + id;
+    return this.http.get<User>(url);
   }
 }
-

@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit {
   userName: string = sessionStorage.getItem("userName");
   flag: boolean = false;
+  show: boolean = false;
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -17,15 +18,22 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
+    // alert("logout successfully!");
     this.router.navigate(["home"]);
-    alert("logout successfully!");
-   
   }
   navbarShow() {
-    if (sessionStorage.getItem("userId") != null) {
+    if (
+      sessionStorage.getItem("userLoggedIn") &&
+      sessionStorage.getItem("userLoggedIn") === "true"
+    ) {
       this.flag = true;
     } else {
       this.flag = false;
     }
+    // if (parseInt(sessionStorage.getItem("docUpload")) == 1) {
+    //   this.show = false;
+    // } else {
+    //   this.show = true;
+    // }
   }
 }

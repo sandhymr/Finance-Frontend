@@ -5,6 +5,7 @@ import { EmiSchemadetails, Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { User } from "src/app/models/user";
 import { ProductService } from "src/app/services/product.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { TransactionService } from "src/app/services/transaction.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -20,14 +21,16 @@ export class EmiAndBuyComponent implements OnInit {
   product: Product = new Product();
   user: User;
   flag: boolean = false;
-  flag1:boolean=false;
+  flag1: boolean = false;
   result: Transaction;
+  isLoading = false;
   faq: FrequentlyAskedQuestions[];
   constructor(
     private productService: ProductService,
     private userService: UserService,
     private transactionService: TransactionService,
-    private router: Router
+    private router: Router,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -46,7 +49,8 @@ export class EmiAndBuyComponent implements OnInit {
           this.emiCalculation(this.product);
           console.log(JSON.stringify(this.product));
         } else {
-          alert("Product details not found");
+          // alert("Product details not found");
+          this.snackbar.failed("Product details not found");
         }
       });
   }
@@ -68,22 +72,30 @@ export class EmiAndBuyComponent implements OnInit {
   // }
 
   pay() {
+    this.isLoading = true;
     this.transaction.userId = this.userId;
     this.transaction.productId = this.productId;
     console.log(this.transaction.userId);
     console.log(this.transaction.productId);
     console.log(this.transaction.emiScheme);
-    this.transactionService.buyProduct(this.transaction).subscribe((data) => {
-      this.result = data;
-      if (this.result.status == "SUCCESS") {
-        alert(this.result.message);
-        this.router.navigate(["invoice"], {
-          queryParams: { transaction: JSON.stringify(this.result) },
-        });
-      } else {
-        alert(this.result.message);
-      }
-    });
+    this.transactionService.buyProduct(this.transaction).subscribe(
+      (data) => {
+        this.result = data;
+        if (this.result.status == "SUCCESS") {
+          this.isLoading = false;
+          // alert(this.result.message);
+          this.snackbar.success(this.result.message);
+          this.router.navigate(["invoice"], {
+            queryParams: { transaction: JSON.stringify(this.result) },
+          });
+        } else {
+          this.isLoading = false;
+          // alert(this.result.message);
+          this.snackbar.failed(this.result.message);
+        }
+      },
+      (err) => (this.isLoading = false)
+    );
   }
 
   emiCalculation(product: Product) {
@@ -118,12 +130,12 @@ export class EmiAndBuyComponent implements OnInit {
     this.productService
       .viewFrequentlyAskedQuestionsByProductId(this.productId)
       .subscribe((data) => {
-        if (data != null) {
+        if (data.length != 0) {
           this.faq = data;
-          this.flag1=true;
+          this.flag1 = true;
         } else {
           alert("no records found");
-          this.flag1=false;
+          this.flag1 = false;
         }
       });
   }
