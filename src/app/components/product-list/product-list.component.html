@@ -17,7 +17,7 @@
 <div class="container">
   <div class="row">
     <div *ngFor="let product of products" class="col-md-3 thumbnail">
-      <div class="card" style="width: 20em; height: 21em">
+      <div class="card">
         <a (click)="viewProduct(product)">
           <img
             [src]="product.productImageUrl"

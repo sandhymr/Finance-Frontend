@@ -134,7 +134,7 @@ export class EmiAndBuyComponent implements OnInit {
           this.faq = data;
           this.flag1 = true;
         } else {
-          alert("no records found");
+          // alert("no records found");
           this.flag1 = false;
         }
       });

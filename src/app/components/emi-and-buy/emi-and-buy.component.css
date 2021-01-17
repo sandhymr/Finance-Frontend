@@ -17,7 +17,6 @@ img {
   font-size: larger;
 }
 
-
 h2 {
   font-family: Arial, Verdana;
   font-weight: 800;
@@ -36,7 +35,7 @@ h2 {
   font-size: 1.5rem;
 }
 .accordion-section .panel-default .panel-title a:after {
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   font-style: normal;
   font-size: 3rem;
   content: "\f106";
