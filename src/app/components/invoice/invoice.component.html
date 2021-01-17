@@ -1,36 +1,18 @@
-<head>
-  <style>
-    table,
-    td,
-    th {
-      border: 2px solid black;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-  </style>
-</head>
 <app-header></app-header><br /><br /><br /><br />
-<div style="margin-bottom: 50px;margin-top: 10px;">
+<div style="margin-bottom: 30px">
   <div id="pdf">
     <h2 style="text-align: center">Transaction Invoice</h2>
-    <br />
     <hr />
     <h6 style="margin-left: 228px">Name : {{ userName }}</h6>
-    <br />
     <h6 style="margin-left: 228px">
       Date of Transaction : {{ transaction.transaction_date }}
       {{ transaction.transaction_time }}
     </h6>
-    <br />
     <hr />
-
     <div>
-      <table class="table table-bordered" style="width: 70%; margin-left: auto; margin-right: auto">
+      <table class="table table-bordered">
         <tr>
-          <th>Transaction ID</th>
+          <th>Transaction Id</th>
           <td>{{ transaction.transactionId }}</td>
         </tr>
         <tr>
