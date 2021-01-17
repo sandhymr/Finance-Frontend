@@ -13,7 +13,7 @@
   </style>
 </head>
 <app-header></app-header><br /><br /><br /><br />
-<div style="margin-bottom: 70px;">
+<div style="margin-bottom: 50px;margin-top: 10px;">
   <div id="pdf">
     <h2 style="text-align: center">Transaction Invoice</h2>
     <br />
@@ -27,48 +27,43 @@
     <br />
     <hr />
 
-  <div>
-    <table
-      class="table table-bordered"
-      style="width: 70%; margin-left: auto; margin-right: auto"
-    >
-      <tr>
-        <th>Transaction Id</th>
-        <td>{{ transaction.transactionId }}</td>
-      </tr>
-      <tr>
-        <th>Product Id</th>
-        <td>{{ transaction.productId }}</td>
-      </tr>
-      <tr>
-        <th>Product Name</th>
-        <td>{{ transaction.productName }}</td>
-      </tr>
-      <tr>
-        <th>Amount Paid</th>
-        <td>{{ transaction.amount_paid }}</td>
-      </tr>
-      <tr>
-        <th>Amount Remaining</th>
-        <td *ngIf="transaction.amount_remaining >= 0">
-          {{ transaction.amount_remaining }}
-        </td>
-      </tr>
-      <tr>
-        <th>EMI Scheme</th>
-        <td>{{ transaction.emiScheme }} Months</td>
-      </tr>
-      <tr>
-        <th>Payment Completion</th>
-        <td *ngIf="!emiCompleted">Pending</td>
-        <td *ngIf="emiCompleted">Completed</td>
-      </tr>
-    </table>
+    <div>
+      <table class="table table-bordered" style="width: 70%; margin-left: auto; margin-right: auto">
+        <tr>
+          <th>Transaction ID</th>
+          <td>{{ transaction.transactionId }}</td>
+        </tr>
+        <tr>
+          <th>Product Id</th>
+          <td>{{ transaction.productId }}</td>
+        </tr>
+        <tr>
+          <th>Product Name</th>
+          <td>{{ transaction.productName }}</td>
+        </tr>
+        <tr>
+          <th>Amount Paid</th>
+          <td>{{ transaction.amount_paid }}</td>
+        </tr>
+        <tr>
+          <th>Amount Remaining</th>
+          <td *ngIf="transaction.amount_remaining >= 0">
+            {{ transaction.amount_remaining }}
+          </td>
+        </tr>
+        <tr>
+          <th>EMI Scheme</th>
+          <td>{{ transaction.emiScheme }} Months</td>
+        </tr>
+        <tr>
+          <th>Payment Completion</th>
+          <td *ngIf="!emiCompleted">Pending</td>
+          <td *ngIf="emiCompleted">Completed</td>
+        </tr>
+      </table>
+    </div>
   </div>
+  <button (click)="convetToPDF()" style="background: cyan; margin-left: 45%">
+    Generate Pdf
+  </button>
 </div>
-<button (click)="convetToPDF()" style="background: cyan; margin-left: 45%">
-  Generate Pdf
-</button>
-<br />
-
-<!-- <app-footer></app-footer> -->
