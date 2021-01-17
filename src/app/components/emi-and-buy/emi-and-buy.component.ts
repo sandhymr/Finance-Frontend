@@ -49,7 +49,8 @@ export class EmiAndBuyComponent implements OnInit {
           this.emiCalculation(this.product);
           console.log(JSON.stringify(this.product));
         } else {
-          alert("Product details not found");
+          // alert("Product details not found");
+          this.snackbar.failed("Product details not found");
         }
       });
   }
@@ -129,7 +130,7 @@ export class EmiAndBuyComponent implements OnInit {
     this.productService
       .viewFrequentlyAskedQuestionsByProductId(this.productId)
       .subscribe((data) => {
-        if (data != null) {
+        if (data.length != 0) {
           this.faq = data;
           this.flag1 = true;
         } else {

@@ -195,8 +195,13 @@
       <div class="modal-body">
         <app-user-details *ngIf="user" [user]="user"></app-user-details>
       </div>
-      <div class="modal-footer" *ngIf="show">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-dismiss="modal"
+          *ngIf="show"
+        >
           <a
             style="text-decoration: none; color: white"
             (click)="generateCard(user.userId)"

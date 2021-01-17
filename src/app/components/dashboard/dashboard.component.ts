@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "src/app/models/product";
 import { Transaction } from "src/app/models/transaction";
 import { ProductService } from "src/app/services/product.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
 import { TransactionService } from "src/app/services/transaction.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private userService: UserService,
     private transactionService: TransactionService,
-    private productService: ProductService
+    private productService: ProductService,
+    private snackbar: SnackbarService
   ) {}
   cardTypebool: boolean = true;
   userId: number = parseInt(sessionStorage.getItem("userId"));
@@ -114,7 +116,10 @@ export class DashboardComponent implements OnInit {
   }
   checkDoc() {
     if (this.docUpload != 1) {
-      alert("Upload documents in document section to acivate ur card");
+      // alert("Upload documents in document section to acivate ur card");
+      this.snackbar.failed(
+        "Upload documents in document section to acivate ur card"
+      );
     }
   }
 }
