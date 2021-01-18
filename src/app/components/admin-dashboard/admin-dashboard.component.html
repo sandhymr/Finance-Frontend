@@ -13,7 +13,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/adminDashboard']">
+          <a class="nav-link" (click)="forAdminDashboard()" [routerLink]="['/adminDashboard']">
             <i class="material-icons">dashboard</i>
             <p>Dashboard</p>
           </a>
@@ -60,21 +60,13 @@
   </div>
   <div class="main-panel">
     <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
-    >
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
       <div class="container-fluid">
         <div class="navbar-wrapper">
           <b>Welcome back {{ adminName }}!!</b>
         </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          aria-controls="navigation-index"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+          aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
           <span class="navbar-toggler-icon icon-bar"></span>
@@ -110,15 +102,52 @@
         </a> -->
 
         <!-- cardtypesearch -->
+        <div *ngIf="adminDash">
+          <div class="card-deck" style="margin: 3rem;">
+            <div class="card bg-primary">
+              <div class="card-body text-center">
+                <p class="card-title" style="font-size: x-large;">New Users Registered:</p>
+                <p class="card-text" style="font-size: x-large;">{{countOfNewUsers}}</p>
+                <button class="w3-button w3-deep-purple w3-margin-bottom" (click)="viewAllNotCardHolders()"
+                  style="font-size: large;">View All</button>
+              </div>
+            </div>
+
+            <div class="card bg-primary">
+              <div class="card-body text-center">
+                <p class="card-title" style="font-size: x-large;">Total Products:</p>
+                <p class="card-text" style="font-size: x-large;">{{countOfProducts}}</p>
+                <button class="w3-button w3-deep-purple w3-margin-bottom" (click)="addProduct()"
+                  style="font-size: large;">Add Product</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-deck" style="margin: 3rem;">
+            <div class="card bg-primary">
+              <div class="card-body text-center">
+                <p class="card-title" style="font-size: x-large;">Gold Card Users:</p>
+                <p class="card-text" style="font-size: x-large;">{{countOfGoldUsers}}</p>
+                <button class="w3-button w3-deep-purple w3-margin-bottom" (click)="viewCardType('Gold')"
+                  style="font-size: large;">View All</button>
+              </div>
+            </div>
+
+            <div class="card bg-primary">
+              <div class="card-body text-center">
+                <p class="card-title" style="font-size: x-large;">Titanium Card Users:</p>
+                <p class="card-text" style="font-size: x-large;">{{countOfTitaniumUsers}}</p>
+                <button class="w3-button w3-deep-purple w3-margin-bottom" (click)="viewCardType('Titanium')"
+                  style="font-size: large;">View All</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div *ngIf="type">
           <form #cardType="ngForm" (ngSubmit)="search()">
-            <input
-              class="form-control"
-              type="text"
-              name="cardType"
-              placeholder="Enter card type"
-              [(ngModel)]="user.cardType"
-            />&nbsp;
+            <input class="form-control" type="text" name="cardType" placeholder="Enter card type"
+              [(ngModel)]="user.cardType" />&nbsp;
             <button type="submit" class="btn btn-blue text-center">
               Search
             </button>
@@ -171,24 +200,13 @@
     </footer>
   </div>
 </div>
-<div
-  class="modal fade"
-  id="userModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLongTitle"
-  aria-hidden="true"
->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">User Details</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -196,27 +214,12 @@
         <app-user-details *ngIf="user" [user]="user"></app-user-details>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-dismiss="modal"
-          *ngIf="show"
-        >
-          <a
-            style="text-decoration: none; color: white"
-            (click)="generateCard(user.userId)"
-            >Generate Card</a
-          >
+        <button type="button" class="btn btn-primary" data-dismiss="modal" *ngIf="show">
+          <a style="text-decoration: none; color: white" (click)="generateCard(user.userId)">Generate Card</a>
         </button>
         <button type="button" class="btn btn-primary">
-          <a
-            [routerLink]="['/download']"
-            [queryParams]="{ userId: user.userId }"
-            routerLinkActive="router-link-active"
-            style="text-decoration: none; color: white"
-            target="_blank"
-            >View Documents</a
-          >
+          <a [routerLink]="['/download']" [queryParams]="{ userId: user.userId }" routerLinkActive="router-link-active"
+            style="text-decoration: none; color: white" target="_blank">View Documents</a>
         </button>
       </div>
     </div>
