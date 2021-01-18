@@ -1,32 +1,22 @@
 <app-header></app-header>
-<div
-  class="w3-content"
-  style="
+<div class="w3-content" style="
     max-width: 2000px;
     margin-top: 46px;
     background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/07/credit-cards-4-steps-1920x1152.jpg');
-  "
->
+  ">
   <p *ngIf="flag; then ifb; else elsepart"></p>
   <ng-template #ifb>
     <p *ngIf="cardTypebool; then ifb1; else else1"></p>
     <ng-template #ifb1>
       <div class="col d-flex justify-content-center">
-        <div
-          class="card bg-dark text-white"
-          style="
+        <div class="card bg-dark text-white" style="
             width: 50%;
             height: 50%;
             margin-top: 60px;
             margin-bottom: 40px;
             font-family: 'Big Shoulders Stencil Text', cursive;
-          "
-        >
-          <img
-            class="card-img"
-            src="../../../assets/GoldCredit.PNG"
-            alt="Card image"
-          />
+          ">
+          <img class="card-img" src="../../../assets/GoldCredit.PNG" alt="Card image" />
           <div class="card-img-overlay">
             <div
               class="credit-font credit-card-number"
@@ -52,21 +42,14 @@
     </ng-template>
     <ng-template #else1>
       <div class="col d-flex justify-content-center">
-        <div
-          class="card bg-dark text-white"
-          style="
+        <div class="card bg-dark text-white" style="
             width: 50%;
             height: 50%;
             margin-top: 60px;
             margin-bottom: 40px;
             font-family: 'Big Shoulders Stencil Text', cursive;
-          "
-        >
-          <img
-            class="card-img"
-            src="../../../assets/TitaniumCredit.PNG"
-            alt="Card image"
-          />
+          ">
+          <img class="card-img" src="../../../assets/TitaniumCredit.PNG" alt="Card image" />
           <div class="card-img-overlay">
             <div
               class="credit-font credit-card-number"
@@ -97,7 +80,7 @@
       >
         <img
           class="card-img"
-          src="https://www.solidbackgrounds.com/images/1920x1080/1920x1080-red-solid-color-background.jpg"
+          src="../../../assets/Blue_Credit_card_337x213.jpg"
           alt="Card image"
         />
         <div class="card-img-overlay">
@@ -109,16 +92,13 @@
     </div>
   </ng-template>
 
-  <div
-    class="card border-dark mb-3"
-    style="
+  <div class="card border-dark mb-3" style="
       max-width: 70rem;
       height: auto;
       margin-bottom: 100px;
       margin-left: 180px;
       background-color: lightgray;
-    "
-  >
+    ">
     <div class="card-body text-primary">
       <h2 class="card-title" style="color: black">Recent Transactions</h2>
       <div class="card-group" *ngIf="!noTransaction">
@@ -135,11 +115,7 @@
           </div>
         </div>
 
-        <div
-          class="card"
-          *ngIf="tran02 != null"
-          style="margin-left: 15px; margin-right: 15px"
-        >
+        <div class="card" *ngIf="tran02 != null" style="margin-left: 15px; margin-right: 15px">
           <div class="card-body">
             <h5 class="card-title" style="color: black">
               {{ tran02.productName }}
@@ -167,27 +143,20 @@
       <div class="card-group" *ngIf="noTransaction">
         <b style="color: rgb(48, 46, 46)">No Transactions yet...</b>
       </div>
-      <button
-        *ngIf="!noTransaction"
-        class="w3-button w3-black w3-margin-bottom"
-        style="float: right; margin-top: 10px"
-        [routerLink]="['/viewAllTransactions']"
-      >
+      <button *ngIf="!noTransaction" class="w3-button w3-black w3-margin-bottom" style="float: right; margin-top: 10px"
+        [routerLink]="['/viewAllTransactions']">
         View All
       </button>
     </div>
   </div>
   <br />
-  <div
-    class="card border-dark mb-3"
-    style="
+  <div class="card border-dark mb-3" style="
       max-width: 70rem;
       height: auto;
       margin-bottom: 150px;
       margin-left: 180px;
       background-color: lightgray;
-    "
-  >
+    ">
     <div class="card-body text-primary">
       <h2 class="card-title" style="color: black">Recent Purchases</h2>
       <div class="card-group" *ngIf="!notPurchased">
@@ -204,11 +173,7 @@
           </div>
         </div>
 
-        <div
-          class="card"
-          *ngIf="pran02 != null"
-          style="margin-left: 15px; margin-right: 15px"
-        >
+        <div class="card" *ngIf="pran02 != null" style="margin-left: 15px; margin-right: 15px">
           <div class="card-body">
             <h5 class="card-title" style="color: black">
               {{ pran02.productName }}
@@ -236,12 +201,8 @@
       <div class="card-group" *ngIf="notPurchased">
         <b style="color: rgb(48, 46, 46)">No products purchased yet...</b>
       </div>
-      <button
-        *ngIf="!notPurchased"
-        class="w3-button w3-black w3-margin-bottom"
-        style="float: right; margin-top: 10px"
-        [routerLink]="['/productsPurchased']"
-      >
+      <button *ngIf="!notPurchased" class="w3-button w3-black w3-margin-bottom" style="float: right; margin-top: 10px"
+        [routerLink]="['/productsPurchased']">
         View All
       </button>
     </div>
