@@ -78,13 +78,13 @@ export class DashboardComponent implements OnInit {
           this.result01 = data;
 
           if (data[0] != null) {
-            this.tran01 = data.pop();
+            this.tran01 = data[data.length-1];
           }
           if (data[1] != null) {
-            this.tran02 = data.pop();
+            this.tran02 = data[data.length-2];
           }
           if (data[2] != null) {
-            this.tran03 = data.pop();
+            this.tran03 = data[data.length-3];
           }
         }
       });
@@ -103,13 +103,13 @@ export class DashboardComponent implements OnInit {
           this.notPurchased = false;
           this.prod = data;
           if (data[0] != null) {
-            this.pran01 = data.pop();
+            this.pran01 = data[data.length-1];
           }
           if (data[1] != null) {
-            this.pran02 = data.pop();
+            this.pran02 = data[data.length-2];
           }
           if (data[2] != null) {
-            this.pran03 = data.pop();
+            this.pran03 = data[data.length-3];
           }
         }
       });
