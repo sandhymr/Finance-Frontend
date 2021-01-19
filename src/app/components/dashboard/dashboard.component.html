@@ -84,9 +84,9 @@
           alt="Card image"
         />
         <div class="card-img-overlay">
-          <h5 class="card-title">Card Details: Pending</h5>
-          <h6 class="card-text">Name: {{ userName }}</h6>
-          <h6 class="card-text">Last updated 3 mins ago</h6>
+          <h5 class="card-title" style="font-size: x-large; margin-top: 16rem;">Card Details: Not Activated Yet</h5>
+          <h6 class="card-text" style="font-size: x-large;">Name: {{ userName }}</h6>
+          <h6 class="card-text" style="font-size: x-large;">Last updated 3 mins ago</h6>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@
             </h5>
             <p class="card-text">Product Id: {{ pran01.productId }}</p>
             <p class="card-text" *ngIf="pran01.amount_remaining > 0">
-              Amount Remaining:
+              Amount Remaining:{{ pran01.amount_remaining }}
             </p>
             <p class="card-text">Emi Scheme: {{ pran01.emiScheme }}</p>
           </div>
